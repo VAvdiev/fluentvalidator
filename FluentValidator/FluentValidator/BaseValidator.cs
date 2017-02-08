@@ -21,11 +21,13 @@ namespace FluentValidator
         public bool IsValid { get; protected set; }
         public string ValidationMessage { get; protected set; }
         public string FieldName { get; private set; }
+        public Func<object, object> Getter { get; set; }
+
         public void Validate(object entity)
         {
             foreach (var validationRule in ValidationRules)
             {
-                if (validationRule.Predicate(entity))
+                if (validationRule.Predicate(Getter(entity)))
                 {
                     SetFailure(validationRule.Message);
                 }

@@ -1,6 +1,6 @@
 namespace FluentValidator
 {
-    class SampleValidator : BaseValidation<CreateEmployeeRequest>
+    public class SampleValidator : BaseValidation<CreateEmployeeRequest>
     {
         public bool Configure()
         {

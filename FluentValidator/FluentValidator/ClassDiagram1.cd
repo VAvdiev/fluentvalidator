@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FluentValidator.BaseValidation&lt;TEntity&gt;" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAACABAQAIAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseValidation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FluentValidator.BaseValidator" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAABAAACAAAAAAAgAIAAAAACAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>BaseValidator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FluentValidator.CreateEmployeeRequest" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAEAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAg=</HashCode>
+      <FileName>CreateEmployeeRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FluentValidator.DateTimeValidator" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEAAAAAA=</HashCode>
+      <FileName>DateTimeValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FluentValidator.IntValidator" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>IntValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FluentValidator.SampleValidator" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SampleValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FluentValidator.StringValidator" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>StringValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FluentValidator.ValidationRule" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ValidationRule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="FluentValidator.IValidationRule" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>IValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FluentValidator.IValidatorResult" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAACAAAAAAAgAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IValidatorResult.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -33,7 +33,7 @@ namespace FluentValidator
         {
             var getter = getterExpression.Compile();
 
-            var intValidator = new IntValidator(getter(null),"");
+            var intValidator = new IntValidator(o=>getter((TEntity)o), "");
 
             _validatorResults.Add(intValidator);
 
@@ -44,13 +44,24 @@ namespace FluentValidator
         {
             var getter = getterExpression.Compile();
 
-            var intValidator = new StringValidator(getter(null), "");
+            var intValidator = new StringValidator(o => getter((TEntity)o), "");
 
             _validatorResults.Add(intValidator);
 
             return intValidator;
         }
 
+
+        protected DateTimeValidator RuleFor(Expression<Func<TEntity, DateTime>> getterExpression)
+        {
+            var getter = getterExpression.Compile();
+
+            var intValidator = new DateTimeValidator(o => getter((TEntity)o), "");
+
+            _validatorResults.Add(intValidator);
+
+            return intValidator;
+        }
 
         public IEnumerable<IValidatorResult> Validate(TEntity entity)
         {
@@ -59,16 +70,6 @@ namespace FluentValidator
                 validatorResult.Validate(entity);
             }
             return _validatorResults.Where(x => !x.IsValid);
-        } 
-        protected DateTimeValidator RuleFor(Expression<Func<TEntity, DateTime>> getterExpression)
-        {
-            var getter = getterExpression.Compile();
-
-            var intValidator = new DateTimeValidator(getter(null), "");
-
-            _validatorResults.Add(intValidator);
-
-            return intValidator;
         }
     }
 }

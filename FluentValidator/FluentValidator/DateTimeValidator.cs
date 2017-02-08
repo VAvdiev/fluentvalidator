@@ -5,16 +5,14 @@ namespace FluentValidator
     public class DateTimeValidator: BaseValidator
     {
         private readonly DateTime? _value;
+        private Func<object, DateTime> getter;
 
-        public DateTimeValidator(DateTime value, string fieldName) : base(fieldName)
+        public DateTimeValidator(Func<object, DateTime> getter, string fieldName) : base(fieldName)
         {
-            Value = value;
+            Getter = o => getter(o);
         }
 
-        public DateTimeValidator(DateTime? value, string fieldName) : base(fieldName)
-        {
-            Value = value;
-        }
+       
 
         public DateTimeValidator IsNotNull()
         {
@@ -22,7 +20,7 @@ namespace FluentValidator
 
             if (!Value.HasValue)
             {
-                SetFailure("Value is null");
+                //SetFailure("Value is null");
             }
             return this;
         }
