@@ -21,6 +21,16 @@ namespace FluentValidator
         public bool IsValid { get; protected set; }
         public string ValidationMessage { get; protected set; }
         public string FieldName { get; private set; }
+        public void Validate(object entity)
+        {
+            foreach (var validationRule in ValidationRules)
+            {
+                if (validationRule.Predicate(entity))
+                {
+                    SetFailure(validationRule.Message);
+                }
+            }
+        }
 
         private void AddRule(ValidationRule validationRule)
         {
@@ -29,7 +39,7 @@ namespace FluentValidator
 
         protected IValidationRule AddRule<T>( Func<T, bool> pred )
         {
-            var validationRule = new ValidationRule( o => pred((T)o));
+            var validationRule = new ValidationRule(o => pred((T)o));
             ValidationRules.Add(validationRule);
 
             return validationRule;

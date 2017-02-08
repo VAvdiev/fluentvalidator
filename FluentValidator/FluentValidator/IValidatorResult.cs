@@ -11,5 +11,6 @@ namespace FluentValidator
          bool IsValid { get; }
         string ValidationMessage { get; }
         string FieldName { get; }
+        void Validate(object entity);
     }
 }

@@ -51,6 +51,15 @@ namespace FluentValidator
             return intValidator;
         }
 
+
+        public IEnumerable<IValidatorResult> Validate(TEntity entity)
+        {
+            foreach (var validatorResult in _validatorResults)
+            {
+                validatorResult.Validate(entity);
+            }
+            return _validatorResults.Where(x => !x.IsValid);
+        } 
         protected DateTimeValidator RuleFor(Expression<Func<TEntity, DateTime>> getterExpression)
         {
             var getter = getterExpression.Compile();
