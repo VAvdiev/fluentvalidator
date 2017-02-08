@@ -2,7 +2,7 @@
 
 namespace FluentValidator
 {
-    class DateTimeValidator: BaseValidator
+    public class DateTimeValidator: BaseValidator
     {
         private readonly DateTime? _value;
 
@@ -18,6 +18,8 @@ namespace FluentValidator
 
         public DateTimeValidator IsNotNull()
         {
+            AddRule<DateTime?>( x => !x.HasValue).WithMessage("Value is null");
+
             if (!Value.HasValue)
             {
                 SetFailure("Value is null");

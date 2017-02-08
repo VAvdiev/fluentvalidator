@@ -1,6 +1,6 @@
 ﻿namespace FluentValidator
 {
-    class StringValidator : BaseValidator
+    public class StringValidator : BaseValidator
     {
         public StringValidator(string value,string fieldName) : base(fieldName)
         {
@@ -9,6 +9,8 @@
 
         public StringValidator IsNotEmpty()
         {
+            AddRule<string>(string.IsNullOrEmpty).WithMessage("String was empty");
+
             if (string.IsNullOrEmpty(Value))
             {
                 SetFailure("String was empty");

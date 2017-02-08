@@ -1,7 +1,12 @@
-﻿namespace FluentValidator
+﻿using System;
+using System.Collections.Generic;
+
+namespace FluentValidator
 {
-    class BaseValidator : IValidatorResult
+    public class BaseValidator : IValidatorResult
     {
+        protected List<ValidationRule> ValidationRules = new List<ValidationRule>();
+
         public BaseValidator(string fieldName)
         {
             FieldName = fieldName;
@@ -16,5 +21,18 @@
         public bool IsValid { get; protected set; }
         public string ValidationMessage { get; protected set; }
         public string FieldName { get; private set; }
+
+        private void AddRule(ValidationRule validationRule)
+        {
+            ValidationRules.Add(validationRule);
+        }
+
+        protected IValidationRule AddRule<T>( Func<T, bool> pred )
+        {
+            var validationRule = new ValidationRule( o => pred((T)o));
+            ValidationRules.Add(validationRule);
+
+            return validationRule;
+        }
     }
 }

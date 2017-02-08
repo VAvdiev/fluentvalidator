@@ -1,6 +1,9 @@
-﻿namespace FluentValidator
+﻿using System;
+using System.Collections.Generic;
+
+namespace FluentValidator
 {
-    class IntValidator : BaseValidator
+    public class IntValidator : BaseValidator
     {
         public IntValidator(int value, string fieldName) : base(fieldName)
         {
@@ -14,12 +17,14 @@
 
         public IntValidator GreaterThan(int val)
         {
-            if (Value< val)
+            AddRule<int>( x => x < val).WithMessage("The value should be greater than " + val);
+            if (Value < val)
             {
                 SetFailure("The value should be greater than " + val);
             }
             return this;
         }
+
         public int? Value{ get; private set; }
     }
 }
