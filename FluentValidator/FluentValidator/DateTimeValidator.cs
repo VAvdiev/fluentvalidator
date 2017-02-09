@@ -4,9 +4,6 @@ namespace FluentValidator
 {
     public class DateTimeValidator: BaseValidator
     {
-        private readonly DateTime? _value;
-        private Func<object, DateTime> getter;
-
         public DateTimeValidator(Func<object, DateTime> getter, string fieldName) : base(fieldName)
         {
             Getter = o => getter(o);
@@ -18,7 +15,6 @@ namespace FluentValidator
 
             return this;
         }
-        public DateTime? Value { get; private set; }
 
         public DateTimeValidator MoreThanToday()
         {

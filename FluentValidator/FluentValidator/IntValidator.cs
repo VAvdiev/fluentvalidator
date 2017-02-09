@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace FluentValidator
 {
     public class IntValidator : BaseValidator
     {
-
         public IntValidator(Func<object, int> getter, string fieldName) : base(o => getter(o),fieldName)
         {
         }
@@ -16,7 +16,5 @@ namespace FluentValidator
                 .WithMessage("The value of {0} must be greater than " + val, FieldName);
             return this;
         }
-
-        public int? Value{ get; private set; }
     }
 }

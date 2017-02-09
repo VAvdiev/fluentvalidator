@@ -29,7 +29,6 @@ namespace FluentValidator
             var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);
             var propertyName = PropertyExpressionHelper.GetPropertyName(getterExpression);
 
-
             var intValidator = new IntValidator(o=>getter((TEntity)o), propertyName);
 
             _validatorResults.Add(intValidator);
@@ -37,6 +36,14 @@ namespace FluentValidator
             return intValidator;
         }
 
+
+        IValidatorResult Create<TValidator>(Expression<Func<TEntity, int>> getterExpression) where TValidator:IValidatorResult
+        {
+            var result = (TValidator)typeof(TValidator)
+                .GetConstructor(new[] { typeof(Expression<Func<TEntity, object>>) })
+                .Invoke(new[] { getterExpression });
+            return result;
+        }
         protected StringValidator RuleFor(Expression<Func<TEntity, string>> getterExpression)
         {
             var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);

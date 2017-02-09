@@ -41,12 +41,7 @@ namespace FluentValidator
             }
         }
 
-        private void AddRule(ValidationRule validationRule)
-        {
-            ValidationRules.Add(validationRule);
-        }
-
-        protected IValidationRule AddRule<T>( Func<T, bool> pred )
+        protected IValidationRule AddRule<T>(Func<T, bool> pred)
         {
             var validationRule = new ValidationRule(o => pred((T)o));
             ValidationRules.Add(validationRule);
