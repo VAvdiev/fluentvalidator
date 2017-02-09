@@ -16,12 +16,8 @@ namespace FluentValidator
 
         public StringValidator IsNotEmpty()
         {
-            AddRule<string>(string.IsNullOrEmpty).WithMessage("String was empty");
+            AddRule<string>(string.IsNullOrEmpty).WithMessage("The property {0} was empty", FieldName);
 
-            if (string.IsNullOrEmpty(Value))
-            {
-           //     SetFailure("String was empty");
-            }
             return this;
         }
         public string Value { get; set; }

@@ -13,11 +13,8 @@ namespace FluentValidator
 
         public IntValidator GreaterThan(int val)
         {
-            AddRule<int>( x => x < val).WithMessage("The value should be greater than " + val);
-            if (Value < val)
-            {
-                //SetFailure("The value should be greater than " + val);
-            }
+            AddRule<int>(x => x < val)
+                .WithMessage("The value of {0} should be greater than " + val, FieldName);
             return this;
         }
 

@@ -19,6 +19,12 @@ namespace FluentValidator
         {
             Message = message;
         }
+
+        public void WithMessage(string format, params object[] args)
+        {
+            Message = string.Format(format, args);
+        }
+
         public string Message { get; private set; }
 
         public Func<object,bool> Predicate { get; set; } 

@@ -9,11 +9,6 @@ namespace FluentValidator
     {
         readonly IList<IValidatorResult> _validatorResults = new List<IValidatorResult>();
 
-        public virtual BaseValidation<TEntity> Validate()
-        {
-            return this;
-        }
-
         public IEnumerable<IValidatorResult> Violations()
         {
             return _validatorResults.Where(x => !x.IsValid).ToList();
@@ -31,9 +26,11 @@ namespace FluentValidator
 
         protected IntValidator RuleFor(Expression<Func<TEntity, int>> getterExpression)
         {
-            var getter = getterExpression.Compile();
+            var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);
+            var propertyName = PropertyExpressionHelper.GetPropertyName(getterExpression);
 
-            var intValidator = new IntValidator(o=>getter((TEntity)o), "");
+
+            var intValidator = new IntValidator(o=>getter((TEntity)o), propertyName);
 
             _validatorResults.Add(intValidator);
 
@@ -42,9 +39,10 @@ namespace FluentValidator
 
         protected StringValidator RuleFor(Expression<Func<TEntity, string>> getterExpression)
         {
-            var getter = getterExpression.Compile();
+            var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);
+            var propertyName = PropertyExpressionHelper.GetPropertyName(getterExpression);
 
-            var intValidator = new StringValidator(o => getter((TEntity)o), "");
+            var intValidator = new StringValidator(o => getter((TEntity)o), propertyName);
 
             _validatorResults.Add(intValidator);
 
@@ -54,9 +52,10 @@ namespace FluentValidator
 
         protected DateTimeValidator RuleFor(Expression<Func<TEntity, DateTime>> getterExpression)
         {
-            var getter = getterExpression.Compile();
+            var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);
+            var propertyName = PropertyExpressionHelper.GetPropertyName(getterExpression);
 
-            var intValidator = new DateTimeValidator(o => getter((TEntity)o), "");
+            var intValidator = new DateTimeValidator(o => getter((TEntity)o), propertyName);
 
             _validatorResults.Add(intValidator);
 
