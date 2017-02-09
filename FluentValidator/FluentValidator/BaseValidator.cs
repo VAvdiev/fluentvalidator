@@ -3,14 +3,21 @@ using System.Collections.Generic;
 
 namespace FluentValidator
 {
-    public class BaseValidator : IValidatorResult
+    public abstract class BaseValidator : IValidatorResult
     {
         protected List<ValidationRule> ValidationRules = new List<ValidationRule>();
 
-        public BaseValidator(string fieldName)
+        protected BaseValidator(string fieldName)
         {
             FieldName = fieldName;
             IsValid = true;
+        }
+
+        protected BaseValidator(Func<object, object> getter, string fieldName)
+        {
+            FieldName = fieldName;
+            IsValid = true;
+            Getter = getter;
         }
 
         protected void SetFailure(string message)

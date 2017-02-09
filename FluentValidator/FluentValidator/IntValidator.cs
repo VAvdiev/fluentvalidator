@@ -6,15 +6,14 @@ namespace FluentValidator
     public class IntValidator : BaseValidator
     {
 
-        public IntValidator(Func<object, int> getter, string fieldName) : base(fieldName)
+        public IntValidator(Func<object, int> getter, string fieldName) : base(o => getter(o),fieldName)
         {
-            Getter = o=>getter(o);
         }
 
         public IntValidator GreaterThan(int val)
         {
             AddRule<int>(x => x < val)
-                .WithMessage("The value of {0} should be greater than " + val, FieldName);
+                .WithMessage("The value of {0} must be greater than " + val, FieldName);
             return this;
         }
 

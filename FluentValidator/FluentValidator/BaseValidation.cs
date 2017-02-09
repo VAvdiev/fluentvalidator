@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace FluentValidator
 {
-    public abstract class  BaseValidation<TEntity> where TEntity:class 
+    public abstract class  BaseValidator<TEntity> where TEntity:class 
     {
         readonly IList<IValidatorResult> _validatorResults = new List<IValidatorResult>();
 

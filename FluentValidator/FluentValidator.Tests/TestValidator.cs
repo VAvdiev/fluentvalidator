@@ -1,6 +1,6 @@
 namespace FluentValidator.Tests
 {
-    public class TestValidator : BaseValidation<CreateEmployeeRequest>
+    public class TestValidator : BaseValidator<CreateEmployeeRequest>
     {
         public bool Configure()
         {

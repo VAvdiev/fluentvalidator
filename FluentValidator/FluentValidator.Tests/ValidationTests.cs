@@ -39,5 +39,24 @@ namespace FluentValidator.Tests
             var validatorResults = validator.Violations().ToList();
             Assert.That(validatorResults[0].ValidationMessage, Is.EqualTo("The property DateOfBirth must be less than today"));
         }
+
+        [Test]
+        public void Validate_IntPropertyEmpty_ValitationError()
+        {
+            var validator = new TestValidator();
+
+            validator.Configure();
+
+            validator.Validate(new CreateEmployeeRequest
+            {
+                FirstName = "asdf",
+                EmployeeID = 1,
+                DateOfBirth = DateTime.Now.AddMonths(-1)
+            });
+
+            Assert.That(validator.ViolationsCount(), Is.EqualTo(1));
+            var validatorResults = validator.Violations().ToList();
+            Assert.That(validatorResults[0].ValidationMessage, Is.EqualTo("The property EmployeeID must be greater than 3"));
+        }
     }
 }
