@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 
-namespace FluentValidator
+namespace FluentValidator.Validators
 {
     public class IntValidator : BaseValidator
     {

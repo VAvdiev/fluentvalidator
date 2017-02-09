@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FluentValidator
+namespace FluentValidator.Validators
 {
     public abstract class BaseValidator : IValidatorResult
     {

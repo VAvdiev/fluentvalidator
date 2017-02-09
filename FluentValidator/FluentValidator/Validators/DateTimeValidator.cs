@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FluentValidator
+namespace FluentValidator.Validators
 {
     public class DateTimeValidator: BaseValidator
     {
@@ -18,13 +18,13 @@ namespace FluentValidator
 
         public DateTimeValidator MoreThanToday()
         {
-            AddRule<DateTime>(x => x < DateTime.Now).WithMessage("The property {0} must be more than {1}", FieldName, DateTime.Now);
+            AddRule<DateTime>(x => x < DateTime.Today).WithMessage("The property {0} must be more than {1}", FieldName, DateTime.Now);
             return this;
         }
 
         public DateTimeValidator LessThanToday()
         {
-            AddRule<DateTime>(x => x >= DateTime.Now).WithMessage("The property {0} must be less than today", FieldName);
+            AddRule<DateTime>(x => x >= DateTime.Today).WithMessage("The property {0} must be less than today", FieldName);
             return this;
         }
     }

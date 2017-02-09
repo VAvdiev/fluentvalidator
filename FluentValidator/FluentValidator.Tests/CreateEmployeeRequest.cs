@@ -1,6 +1,6 @@
 using System;
 
-namespace FluentValidator
+namespace FluentValidator.Tests
 {
     public class CreateEmployeeRequest
     {
