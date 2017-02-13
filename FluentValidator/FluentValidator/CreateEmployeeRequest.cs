@@ -1,7 +1,8 @@
 using System;
 
-namespace FluentValidator.Tests
+namespace FluentValidator
 {
+    
     public class CreateEmployeeRequest
     {
         public int Id { get; set; }

@@ -12,7 +12,7 @@ namespace FluentValidator.Tests
         [Test]
         public void Validate_StringPropertyEmpty_ValitationError()
         {
-            var validator = new SampleValidator();
+            var validator = new TestValidator();
 
             validator.Configure();
 
