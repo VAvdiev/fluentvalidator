@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using NUnit.Framework;
 
@@ -56,7 +58,41 @@ namespace FluentValidator.Tests
 
             Assert.That(validator.ViolationsCount(), Is.EqualTo(1));
             var validatorResults = validator.Violations().ToList();
-            Assert.That(validatorResults[0].ValidationMessage, Is.EqualTo("The property EmployeeID must be greater than 3"));
+            Assert.That(validatorResults[0].ValidationMessage, Is.EqualTo("The value of EmployeeID must be greater than 3"));
         }
+
+        [Test]
+        public void Validate_Performance()
+        {
+            var validator = new TestValidator();
+
+            validator.Configure();
+
+            Random random = new Random();
+
+            var empList = new List<CreateEmployeeRequest>();
+
+            for (int i = 0; i < 1000000; i++)
+            {
+                var em = new CreateEmployeeRequest
+                {
+                    FirstName = "asdf",
+                    EmployeeID = 1,
+                    DateOfBirth = DateTime.Now.AddMonths(-1)
+                };
+                empList.Add(em);
+            }
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            foreach (var request in empList)
+            {
+                validator.Validate(request);
+            }
+
+            stopwatch.Stop();
+
+            Console.WriteLine("Elapsed: " + stopwatch.ElapsedMilliseconds);
+        }
+
     }
 }

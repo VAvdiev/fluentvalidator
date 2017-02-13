@@ -45,6 +45,7 @@ namespace FluentValidator
                 .Invoke(new[] { getterExpression });
             return result;
         }
+
         protected StringValidator RuleFor(Expression<Func<TEntity, string>> getterExpression)
         {
             var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);
