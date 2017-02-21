@@ -41,12 +41,19 @@ namespace FluentValidator.Validators
             }
         }
 
+        
         protected IValidationRule AddRule<T>(Func<T, bool> pred)
         {
             var validationRule = new ValidationRule(o => pred((T)o));
             ValidationRules.Add(validationRule);
 
             return validationRule;
+        }
+
+        public void Reset()
+        {
+            ValidationMessage = string.Empty;
+            IsValid = true;
         }
     }
 }

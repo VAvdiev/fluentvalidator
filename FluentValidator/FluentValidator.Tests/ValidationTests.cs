@@ -24,6 +24,24 @@ namespace FluentValidator.Tests
         }
 
         [Test]
+        public void Validate_TwoTimes_NotAccumulateErrorsValitationError()
+        {
+            var validator = new TestValidator();
+
+            validator.Configure();
+
+            var first = new CreateEmployeeRequest { FirstName = "", EmployeeID = 4 };
+            var second = new CreateEmployeeRequest { FirstName = "asdfas", EmployeeID = 2 };
+            validator.Validate(first);
+            validator.Validate(second);
+
+            Assert.That(validator.ViolationsCount(), Is.EqualTo(1));
+            var validatorResults = validator.Violations().ToList();
+            Assert.That(validatorResults[0].ValidationMessage, Is.EqualTo("The property FirstName was empty"));
+        }
+
+
+        [Test]
         public void Validate_DateTimePropertyEmpty_ValitationError()
         {
             var validator = new TestValidator();
