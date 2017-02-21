@@ -37,7 +37,7 @@ namespace FluentValidator.Tests
 
             Assert.That(validator.ViolationsCount(), Is.EqualTo(1));
             var validatorResults = validator.Violations().ToList();
-            Assert.That(validatorResults[0].ValidationMessage, Is.EqualTo("The property FirstName was empty"));
+            Assert.That(validatorResults[0].ValidationMessage, Is.EqualTo("The value of EmployeeID must be greater than 3"));
         }
 
 
