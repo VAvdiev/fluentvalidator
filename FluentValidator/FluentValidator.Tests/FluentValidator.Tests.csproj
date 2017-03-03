@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="TestValidator.cs" />
     <Compile Include="FluentValidationValidator.cs" />
+    <Compile Include="TestValidator2.cs" />
+    <Compile Include="TestValidatorWithManyErrors.cs" />
     <Compile Include="ValidationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidatorPerformanceTests.cs" />
