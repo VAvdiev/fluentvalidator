@@ -74,16 +74,6 @@ namespace FluentValidator
             return intValidator;
         }
 
-        public IEnumerable<IValidator> Validate3(TEntity entity)
-        {
-            Reset();
-            foreach (var validatorResult in _validators)
-            {
-                validatorResult.Validate(entity);
-            }
-            return _validators.Where(x => !x.IsValid);
-        }
-
         public ValidationResult Validate(TEntity entity)
         {
             Reset();
