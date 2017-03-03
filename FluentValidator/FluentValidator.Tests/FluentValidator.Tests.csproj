@@ -51,6 +51,7 @@
     <Compile Include="TestValidator.cs" />
     <Compile Include="FluentValidationValidator.cs" />
     <Compile Include="TestValidator2.cs" />
+    <Compile Include="TestValidator4.cs" />
     <Compile Include="TestValidatorWithManyErrors.cs" />
     <Compile Include="ValidationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

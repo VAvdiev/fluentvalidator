@@ -8,12 +8,6 @@ namespace FluentValidator.Tests
             RuleFor(x => x.FirstName).IsNotEmpty();
             RuleFor(x => x.DateOfBirth).LessThanToday().IsNotNull();
             RuleFor(x => x.DateOfBirth).IsNotNull();
-
-        }
-        public bool Configure()
-        {
-           
-            return true;
         }
     }
 }

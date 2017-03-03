@@ -38,10 +38,30 @@ namespace FluentValidator.Tests
             Assert.That(validationFailure.FieldName, Is.EqualTo("EmployeeID"));
 
             var validationMessages = validationFailure.ValidationMessages.ToList();
+            Assert.That(validationMessages.Count, Is.EqualTo(2));
             Assert.That(validationMessages.First(), Is.EqualTo("Less error"));
             Assert.That(validationMessages[1], Is.EqualTo("Greater error"));
         }
 
+
+        [Test]
+        public void Validate_PropertyHasManyErrors_SetDefaultMessagesValitationError()
+        {
+            var validator = new TestValidator4();
+
+
+            var validationResult = validator.Validate(new CreateEmployeeRequest { FirstName = "asdf", EmployeeID = 1 });
+
+            var validationFailures = validationResult.ValidationFailures.ToList();
+            var validationFailure = validationFailures.First();
+            Assert.That(validationResult.IsValid, Is.False);
+            Assert.That(validationFailure.FieldName, Is.EqualTo("EmployeeID"));
+
+            var validationMessages = validationFailure.ValidationMessages.ToList();
+            Assert.That(validationMessages.Count, Is.EqualTo(2));
+            Assert.That(validationMessages.First(), Is.EqualTo("The value of EmployeeID must be greater than 3"));
+            Assert.That(validationMessages[1], Is.EqualTo("The value of EmployeeID must be less than 0"));
+        }
 
         [Test]
         public void Validate_TwoTimes_NotAccumulateErrorsValitationError()
