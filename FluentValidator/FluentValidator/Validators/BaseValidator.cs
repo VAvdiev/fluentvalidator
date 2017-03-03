@@ -47,10 +47,10 @@ namespace FluentValidator.Validators
             }
         }
 
-        public BaseValidator WithMessage(string message)
+        protected TValidator  WithMessageInt<TValidator>(string message) where TValidator: BaseValidator
         {
             CurrentValidationRule.WithMessage(message);
-            return this;
+            return (TValidator)this;
         }
         protected IValidationRule AddRule<T>(Func<T, bool> pred)
         {

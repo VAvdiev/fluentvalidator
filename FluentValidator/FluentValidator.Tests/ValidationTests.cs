@@ -14,9 +14,8 @@ namespace FluentValidator.Tests
         {
             var validator = new TestValidator();
 
-            validator.Configure();
 
-            var validationResult = validator.Validate2(new CreateEmployeeRequest {FirstName = "", EmployeeID = 4});
+            var validationResult = validator.Validate(new CreateEmployeeRequest {FirstName = "", EmployeeID = 4});
 
             var validationFailure = validationResult.ValidationFailures.First();
             Assert.That(validationResult.IsValid, Is.False);
@@ -31,13 +30,16 @@ namespace FluentValidator.Tests
             var validator = new TestValidatorWithManyErrors();
 
 
-            var validationResult = validator.Validate2(new CreateEmployeeRequest { FirstName = "", EmployeeID = 4 });
+            var validationResult = validator.Validate(new CreateEmployeeRequest { FirstName = "asdf", EmployeeID = 2 });
 
-            var validationFailure = validationResult.ValidationFailures.First();
+            var validationFailures = validationResult.ValidationFailures.ToList();
+            var validationFailure = validationFailures.First();
             Assert.That(validationResult.IsValid, Is.False);
-            Assert.That(validationFailure.FieldName, Is.EqualTo("FirstName"));
+            Assert.That(validationFailure.FieldName, Is.EqualTo("EmployeeID"));
 
-            Assert.That(validationFailure.ValidationMessages.First(), Is.EqualTo("The property FirstName was empty"));
+            var validationMessages = validationFailure.ValidationMessages.ToList();
+            Assert.That(validationMessages.First(), Is.EqualTo("Less error"));
+            Assert.That(validationMessages[1], Is.EqualTo("Greater error"));
         }
 
 
@@ -50,8 +52,8 @@ namespace FluentValidator.Tests
 
             var first = new CreateEmployeeRequest { FirstName = "", EmployeeID = 4 };
             var second = new CreateEmployeeRequest { FirstName = "asdfas", EmployeeID = 2 };
-            validator.Validate2(first);
-            validator.Validate2(second);
+            validator.Validate(first);
+            validator.Validate(second);
 
             Assert.That(validator.ViolationsCount(), Is.EqualTo(1));
             var validatorResults = validator.Violations().ToList();
@@ -64,7 +66,6 @@ namespace FluentValidator.Tests
         {
             var validator = new TestValidator();
 
-            validator.Configure();
 
             var entity = new CreateEmployeeRequest
             {
@@ -73,7 +74,7 @@ namespace FluentValidator.Tests
                 DateOfBirth = DateTime.Now.AddMonths(1)
             };
 
-            var validationResult = validator.Validate2(entity);
+            var validationResult = validator.Validate(entity);
             var validationFailure = validationResult.ValidationFailures.First();
             Assert.That(validationResult.IsValid, Is.False);
             Assert.That(validationFailure.FieldName, Is.EqualTo("DateOfBirth"));
@@ -94,7 +95,7 @@ namespace FluentValidator.Tests
                 DateOfBirth = DateTime.Now.AddMonths(1)
             };
 
-            var validationResult = validator.Validate2(entity);
+            var validationResult = validator.Validate(entity);
             var validationFailure = validationResult.ValidationFailures.First();
             Assert.That(validationFailure.FieldName, Is.EqualTo("EmployeeID"));
             Assert.That(validationFailure.ValidationMessages.First(), Is.EqualTo("The value of EmployeeID must be greater than 3"));
@@ -105,7 +106,6 @@ namespace FluentValidator.Tests
         {
             var validator = new TestValidator();
 
-            validator.Configure();
 
             Random random = new Random();
 
@@ -140,7 +140,6 @@ namespace FluentValidator.Tests
         {
             var validator = new TestValidator();
 
-            validator.Configure();
             var em = new CreateEmployeeRequest
             {
                 FirstName = "",
@@ -148,7 +147,7 @@ namespace FluentValidator.Tests
                 DateOfBirth = DateTime.Now.AddMonths(-1)
             };
 
-            var validatorResult = validator.Validate2(em);
+            var validatorResult = validator.Validate(em);
             var validationFailure = validatorResult.ValidationFailures.First();
             Assert.That(validatorResult.IsValid, Is.False);
             Assert.That(validationFailure.FieldName, Is.EqualTo("EmployeeID"));

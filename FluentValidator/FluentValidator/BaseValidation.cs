@@ -74,7 +74,7 @@ namespace FluentValidator
             return intValidator;
         }
 
-        public IEnumerable<IValidator> Validate(TEntity entity)
+        public IEnumerable<IValidator> Validate3(TEntity entity)
         {
             Reset();
             foreach (var validatorResult in _validators)
@@ -84,7 +84,7 @@ namespace FluentValidator
             return _validators.Where(x => !x.IsValid);
         }
 
-        public ValidationResult Validate2(TEntity entity)
+        public ValidationResult Validate(TEntity entity)
         {
             Reset();
             foreach (var validatorResult in _validators)
@@ -95,8 +95,6 @@ namespace FluentValidator
                 .Select(validator => new ValidationFailure(validator.FieldName, validator.ValidationFailures))
                 .ToList();
 
-
-            var isValid = validationFailures.Count == 0;
             return new ValidationResult(validationFailures);
         }
     }

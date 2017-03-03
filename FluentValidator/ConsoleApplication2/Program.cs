@@ -49,7 +49,6 @@ namespace ConsoleApplication2
         {
             var validator = new TestValidator();
 
-            validator.Configure();
             foreach (var request in empList)
             {
                 validator.Validate(request);

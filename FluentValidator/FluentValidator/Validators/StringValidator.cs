@@ -16,6 +16,9 @@ namespace FluentValidator.Validators
             return this;
         }
 
-
+        public StringValidator WithMessage(string message)
+        {
+            return WithMessageInt<StringValidator>(message);
+        }
     }
 }

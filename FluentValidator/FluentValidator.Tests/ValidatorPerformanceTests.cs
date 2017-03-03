@@ -44,12 +44,10 @@ namespace FluentValidator.Tests
         }
 
 
-
         private static void MyValidator(List<CreateEmployeeRequest> empList)
         {
             var validator = new TestValidator();
 
-            validator.Configure();
             foreach (var request in empList)
             {
                 validator.Validate(request);

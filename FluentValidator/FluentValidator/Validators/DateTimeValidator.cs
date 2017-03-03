@@ -27,5 +27,10 @@ namespace FluentValidator.Validators
             AddRule<DateTime>(x => x >= DateTime.Today).WithMessage("The property {0} must be less than today", FieldName);
             return this;
         }
+
+        public DateTimeValidator WithMessage(string message)
+        {
+            return WithMessageInt<DateTimeValidator>(message);
+        }
     }
 }

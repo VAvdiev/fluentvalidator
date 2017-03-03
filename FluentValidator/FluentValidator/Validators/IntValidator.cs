@@ -17,9 +17,14 @@ namespace FluentValidator.Validators
 
         public IntValidator LessThan(int val)
         {
-            AddRule<int>(x => x < val)
+            AddRule<int>(x => x > val)
                 .WithMessage("The value of {0} must be less than " + val, FieldName);
             return this;
+        }
+
+        public IntValidator WithMessage(string message)
+        {
+            return WithMessageInt<IntValidator>(message);
         }
 
     }
