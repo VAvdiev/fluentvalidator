@@ -73,6 +73,7 @@ namespace FluentValidator.Validators
 
         public void Reset()
         {
+            _validationFailures.Clear();
             ValidationMessage = string.Empty;
             IsValid = true;
         }

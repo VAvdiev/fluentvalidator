@@ -17,9 +17,9 @@ namespace FluentValidator
 
         public virtual void Reset()
         {
-            foreach (var validatorResult in _validators)
+            foreach (var validator in _validators)
             {
-                validatorResult.Reset();
+                validator.Reset();
             }
         }
 

@@ -88,16 +88,17 @@ namespace FluentValidator.Tests
         {
             var validator = new TestValidator2();
 
-            validator.Configure();
 
-            var first = new CreateEmployeeRequest { FirstName = "", EmployeeID = 4 };
-            var second = new CreateEmployeeRequest { FirstName = "asdfas", EmployeeID = 2 };
+            var first = new CreateEmployeeRequest { FirstName = "asf", EmployeeID = 1 };
+            var second = new CreateEmployeeRequest { FirstName = "asdf", EmployeeID = 2 };
             validator.Validate(first);
-            validator.Validate(second);
+            var validationResult = validator.Validate(second);
 
-            Assert.That(validator.ViolationsCount(), Is.EqualTo(1));
-            var validatorResults = validator.Violations().ToList();
-            Assert.That(validatorResults[0].ValidationMessage, Is.EqualTo("The value of EmployeeID must be greater than 3"));
+            Assert.That(validationResult.IsValid, Is.False);
+            var validationFailures = validationResult.ValidationFailures.ToList();
+            Assert.That(validationFailures.Count,Is.EqualTo(1));
+            Assert.That(validationFailures[0].ValidationMessages.Count(), Is.EqualTo(1));
+            Assert.That(validationFailures[0].ValidationMessages.First(), Is.EqualTo("The value of EmployeeID must be greater than 3"));
         }
 
 
@@ -125,8 +126,6 @@ namespace FluentValidator.Tests
         public void Validate_IntPropertyEmpty_SetDefaultValitationMessage()
         {
             var validator = new TestValidator2();
-
-            validator.Configure();
 
             var entity = new CreateEmployeeRequest
             {
