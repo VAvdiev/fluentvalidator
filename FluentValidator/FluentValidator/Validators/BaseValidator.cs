@@ -7,6 +7,7 @@ namespace FluentValidator.Validators
     {
         protected List<ValidationRule> ValidationRules = new List<ValidationRule>();
         private readonly List<string> _validationFailures;
+        private bool _stopOnFirstFailure;
         protected IValidationRule CurrentValidationRule { get; set; }
 
 
@@ -43,6 +44,10 @@ namespace FluentValidator.Validators
                 if (validationRule.Predicate(Getter(entity)))
                 {
                     SetFailure(validationRule.Message);
+                    if (_stopOnFirstFailure)
+                    {
+                        break;
+                    }
                 }
             }
         }
@@ -50,6 +55,12 @@ namespace FluentValidator.Validators
         protected TValidator  WithMessageInt<TValidator>(string message) where TValidator: BaseValidator
         {
             CurrentValidationRule.WithMessage(message);
+            return (TValidator)this;
+        }
+
+        protected TValidator StopOnFirstFailureInt<TValidator>() where TValidator : BaseValidator
+        {
+            _stopOnFirstFailure = true;
             return (TValidator)this;
         }
         protected IValidationRule AddRule<T>(Func<T, bool> pred)

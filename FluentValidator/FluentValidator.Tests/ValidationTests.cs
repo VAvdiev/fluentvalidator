@@ -43,6 +43,26 @@ namespace FluentValidator.Tests
             Assert.That(validationMessages[1], Is.EqualTo("Greater error"));
         }
 
+        [Test]
+        public void Validate_PropertyHasManyErrorsAndStopOnFirstFailure_OnlyOneValitationError()
+        {
+            var validator = new TestValidatorWithStopOnFirstFailure();
+
+
+            var validationResult = validator.Validate(new CreateEmployeeRequest { FirstName = "asdf", EmployeeID = 2 });
+
+            var validationFailures = validationResult.ValidationFailures.ToList();
+            var validationFailure = validationFailures.First();
+
+            Assert.That(validationResult.IsValid, Is.False);
+            Assert.That(validationFailures.Count,Is.EqualTo(1));
+            Assert.That(validationFailure.FieldName, Is.EqualTo("EmployeeID"));
+
+            var validationMessages = validationFailure.ValidationMessages.ToList();
+            Assert.That(validationMessages.Count, Is.EqualTo(1));
+            Assert.That(validationMessages.First(), Is.EqualTo("Less error"));
+        }
+
 
         [Test]
         public void Validate_PropertyHasManyErrors_SetDefaultMessagesValitationError()

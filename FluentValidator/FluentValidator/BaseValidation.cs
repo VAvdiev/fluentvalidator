@@ -77,9 +77,9 @@ namespace FluentValidator
         public ValidationResult Validate(TEntity entity)
         {
             Reset();
-            foreach (var validatorResult in _validators)
+            foreach (var validator in _validators)
             {
-                validatorResult.Validate(entity);
+                validator.Validate(entity);
             }
             var validationFailures = _validators.Where(x => !x.IsValid)
                 .Select(validator => new ValidationFailure(validator.FieldName, validator.ValidationFailures))

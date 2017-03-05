@@ -27,5 +27,9 @@ namespace FluentValidator.Validators
             return WithMessageInt<IntValidator>(message);
         }
 
+        public IntValidator StopOnFirstFailure()
+        {
+            return StopOnFirstFailureInt<IntValidator>();
+        }
     }
 }

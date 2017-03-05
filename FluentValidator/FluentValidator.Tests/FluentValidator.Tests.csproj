@@ -53,6 +53,7 @@
     <Compile Include="TestValidator2.cs" />
     <Compile Include="TestValidator4.cs" />
     <Compile Include="TestValidatorWithManyErrors.cs" />
+    <Compile Include="TestValidatorWithStopOnFirstFailure.cs" />
     <Compile Include="ValidationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidatorPerformanceTests.cs" />
