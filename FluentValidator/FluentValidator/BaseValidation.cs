@@ -13,14 +13,6 @@ namespace FluentValidator
         public IEnumerable<IValidator> Violations()
         {
             return _validators.Where(x => !x.IsValid).ToList();
-        } 
-
-        public virtual void Reset()
-        {
-            foreach (var validator in _validators)
-            {
-                validator.Reset();
-            }
         }
 
         public int ViolationsCount()
@@ -76,7 +68,6 @@ namespace FluentValidator
 
         public ValidationResult Validate(TEntity entity)
         {
-            Reset();
             foreach (var validator in _validators)
             {
                 validator.Validate(entity);

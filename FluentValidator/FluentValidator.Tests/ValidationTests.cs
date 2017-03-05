@@ -89,7 +89,7 @@ namespace FluentValidator.Tests
             var validator = new TestValidator2();
 
 
-            var first = new CreateEmployeeRequest { FirstName = "asf", EmployeeID = 1 };
+            var first = new CreateEmployeeRequest { FirstName = "", EmployeeID = 4 };
             var second = new CreateEmployeeRequest { FirstName = "asdf", EmployeeID = 2 };
             validator.Validate(first);
             var validationResult = validator.Validate(second);

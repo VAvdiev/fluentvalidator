@@ -39,6 +39,7 @@ namespace FluentValidator.Validators
 
         public void Validate(object entity)
         {
+            Reset();
             foreach (var validationRule in ValidationRules)
             {
                 if (validationRule.Predicate(Getter(entity)))
@@ -71,7 +72,7 @@ namespace FluentValidator.Validators
             return validationRule;
         }
 
-        public void Reset()
+        private void Reset()
         {
             _validationFailures.Clear();
             ValidationMessage = string.Empty;
