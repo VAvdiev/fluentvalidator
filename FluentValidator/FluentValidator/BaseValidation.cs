@@ -10,16 +10,6 @@ namespace FluentValidator
     {
         readonly IList<IValidator> _validators = new List<IValidator>();
 
-        public IEnumerable<IValidator> Violations()
-        {
-            return _validators.Where(x => !x.IsValid).ToList();
-        }
-
-        public int ViolationsCount()
-        {
-            return  _validators.Count(x => !x.IsValid);
-        }
-
         protected IntValidator RuleFor(Expression<Func<TEntity, int>> getterExpression)
         {
             var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);

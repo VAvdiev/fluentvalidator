@@ -2,10 +2,10 @@
 <package >
   <metadata>
     <id>FastValidator</id>
-    <version>1.0.0.1</version>
+    <version>1.0.0.2</version>
     <authors>Sergey Kichuk</authors>
     <owners>Sergey Kichuk</owners>
-    <licenseUrl>https://github.com/exiton3/fluentvalidator</licenseUrl>
+    <licenseUrl>https://github.com/exiton3/fluentvalidator/blob/master/LICENCE.txt</licenseUrl>
     <projectUrl>https://github.com/exiton3/fluentvalidator</projectUrl>    
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Fast lightweight validation framework</description>
