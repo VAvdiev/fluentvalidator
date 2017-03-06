@@ -9,7 +9,7 @@ namespace FluentValidator.Validators
             Getter = getter;
         }
 
-        public StringValidator IsNotEmpty()
+        public StringValidator NotEmpty()
         {
             AddRule<string>(string.IsNullOrEmpty).WithMessage("The property {0} was empty", FieldName);
 
