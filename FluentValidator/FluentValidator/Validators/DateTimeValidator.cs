@@ -32,5 +32,10 @@ namespace FluentValidator.Validators
         {
             return WithMessageInt<DateTimeValidator>(message);
         }
+
+        public DateTimeValidator StopOnFirstFailure()
+        {
+            return StopOnFirstFailureInt<DateTimeValidator>();
+        }
     }
 }

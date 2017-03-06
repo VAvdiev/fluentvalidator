@@ -20,5 +20,10 @@ namespace FluentValidator.Validators
         {
             return WithMessageInt<StringValidator>(message);
         }
+
+        public StringValidator StopOnFirstFailure()
+        {
+            return StopOnFirstFailureInt<StringValidator>();
+        }
     }
 }
