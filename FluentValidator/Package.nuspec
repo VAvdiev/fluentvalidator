@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FastValidator</id>
+    <version>1.0.0.1</version>
+    <authors>Sergey Kichuk</authors>
+    <owners>Sergey Kichuk</owners>
+    <licenseUrl>https://github.com/exiton3/fluentvalidator</licenseUrl>
+    <projectUrl>https://github.com/exiton3/fluentvalidator</projectUrl>    
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Fast lightweight validation framework</description>
+    <releaseNotes>Initial release supports basic validation features</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Fluent validation</tags>
+    <dependencies>
+      <!-- <dependency id="SampleDependency" version="1.0" /> -->
+    </dependencies>
+  </metadata>
+ <files>
+	<file src="..\FluentValidator\FluentValidator\bin\Release\FluentValidator.dll" target="lib\FluentValidator.dll"> </file>
+ </files>
+</package>
