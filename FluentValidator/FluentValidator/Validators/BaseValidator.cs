@@ -27,12 +27,10 @@ namespace FluentValidator.Validators
 
         protected void SetFailure(string message)
         {
-            ValidationMessage = message;
             _validationFailures.Add(message);
             IsValid = false;
         }
         public bool IsValid { get; protected set; }
-        public string ValidationMessage { get; protected set; }
         public IEnumerable<string> ValidationFailures { get { return _validationFailures; } }
         public string FieldName { get; private set; }
         public Func<object, object> Getter { get; set; }
@@ -75,7 +73,6 @@ namespace FluentValidator.Validators
         private void Reset()
         {
             _validationFailures.Clear();
-            ValidationMessage = string.Empty;
             IsValid = true;
         }
     }

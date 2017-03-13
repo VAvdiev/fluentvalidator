@@ -5,9 +5,9 @@ namespace FluentValidator.Tests
         public TestValidator()
         {
             RuleFor(x => x.EmployeeID).GreaterThan(3).WithMessage("Message");
-            RuleFor(x => x.FirstName).IsNotEmpty();
-            RuleFor(x => x.DateOfBirth).LessThanToday().IsNotNull();
-            RuleFor(x => x.DateOfBirth).IsNotNull();
+            RuleFor(x => x.FirstName).NotEmpty();
+            RuleFor(x => x.DateOfBirth).LessThanToday().NotNull();
+            RuleFor(x => x.DateOfBirth).NotNull();
         }
     }
 }

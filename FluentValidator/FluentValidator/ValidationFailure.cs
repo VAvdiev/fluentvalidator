@@ -10,7 +10,7 @@ namespace FluentValidator
             ValidationMessages = validationMessages;
         }
 
-        public string FieldName { get; }
+        public string FieldName { get; private set; }
 
         public IEnumerable<string> ValidationMessages { get; private set; } 
     }

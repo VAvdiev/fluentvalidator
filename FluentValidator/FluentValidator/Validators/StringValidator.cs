@@ -9,7 +9,7 @@ namespace FluentValidator.Validators
             Getter = getter;
         }
 
-        public StringValidator IsNotEmpty()
+        public StringValidator NotEmpty()
         {
             AddRule<string>(string.IsNullOrEmpty).WithMessage("The property {0} was empty", FieldName);
 
@@ -19,6 +19,11 @@ namespace FluentValidator.Validators
         public StringValidator WithMessage(string message)
         {
             return WithMessageInt<StringValidator>(message);
+        }
+
+        public StringValidator StopOnFirstFailure()
+        {
+            return StopOnFirstFailureInt<StringValidator>();
         }
     }
 }

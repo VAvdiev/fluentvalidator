@@ -9,7 +9,7 @@ namespace FluentValidator.Validators
             Getter = o => getter(o);
         }
 
-        public DateTimeValidator IsNotNull()
+        public DateTimeValidator NotNull()
         {
             AddRule<DateTime?>( x => !x.HasValue).WithMessage("The property {0} Value is null", FieldName);
 
@@ -31,6 +31,11 @@ namespace FluentValidator.Validators
         public DateTimeValidator WithMessage(string message)
         {
             return WithMessageInt<DateTimeValidator>(message);
+        }
+
+        public DateTimeValidator StopOnFirstFailure()
+        {
+            return StopOnFirstFailureInt<DateTimeValidator>();
         }
     }
 }
