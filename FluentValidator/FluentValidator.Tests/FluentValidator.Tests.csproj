@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NumberValidatorTests.cs" />
     <Compile Include="TestValidator.cs" />
     <Compile Include="FluentValidationValidator.cs" />
     <Compile Include="TestValidator2.cs" />

@@ -2,34 +2,34 @@
 
 namespace FluentValidator.Validators
 {
-    public class NumberValidator : BaseValidator
+    public class NumericValidator<T> : BaseValidator where T: IComparable
     {
-        public NumberValidator(Func<object, int> getter, string fieldName) : base(o => getter(o),fieldName)
+        public NumericValidator(Func<object, T> getter, string fieldName) : base(o => getter(o),fieldName)
         {
         }
 
-        public NumberValidator GreaterThan(int val)
+        public NumericValidator<T> GreaterThan(T value)
         {
-            AddRule<int>(x => x < val)
-                .WithMessage("The value of {0} must be greater than " + val, FieldName);
+            AddRule<T>(x => x.CompareTo(value) < 0 || x.CompareTo(value) == 0)
+                .WithMessage("The value of {0} must be greater than " + value, FieldName);
             return this;
         }
 
-        public NumberValidator LessThan(int val)
+        public NumericValidator<T> LessThan(T value)
         {
-            AddRule<int>(x => x > val)
-                .WithMessage("The value of {0} must be less than " + val, FieldName);
+            AddRule<T>(x => x.CompareTo(value) > 0 || x.CompareTo(value) == 0)
+                .WithMessage("The value of {0} must be less than " + value, FieldName);
             return this;
         }
 
-        public NumberValidator WithMessage(string message)
+        public NumericValidator<T> WithMessage(string message)
         {
-            return WithMessageInt<NumberValidator>(message);
+            return WithMessageInt<NumericValidator<T>>(message);
         }
 
-        public NumberValidator StopOnFirstFailure()
+        public NumericValidator<T> StopOnFirstFailure()
         {
-            return StopOnFirstFailureInt<NumberValidator>();
+            return StopOnFirstFailureInt<NumericValidator<T>>();
         }
     }
 }

@@ -11,27 +11,16 @@ namespace FluentValidator
         readonly IList<IValidator> _validators = new List<IValidator>();
 
 
-        protected NumberValidator RuleFor(Expression<Func<TEntity, int>> getterExpression)
-
-
+        protected NumericValidator<int> RuleFor(Expression<Func<TEntity, int>> getterExpression)
         {
             var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);
             var propertyName = PropertyExpressionHelper.GetPropertyName(getterExpression);
 
-            var intValidator = new NumberValidator(o=>getter((TEntity)o), propertyName);
+            var intValidator = new NumericValidator<int>(o=>getter((TEntity)o), propertyName);
 
             _validators.Add(intValidator);
 
             return intValidator;
-        }
-
-
-        IValidator Create<TValidator>(Expression<Func<TEntity, int>> getterExpression) where TValidator:IValidator
-        {
-            var result = (TValidator)typeof(TValidator)
-                .GetConstructor(new[] { typeof(Expression<Func<TEntity, object>>) })
-                .Invoke(new[] { getterExpression });
-            return result;
         }
 
         protected StringValidator RuleFor(Expression<Func<TEntity, string>> getterExpression)
