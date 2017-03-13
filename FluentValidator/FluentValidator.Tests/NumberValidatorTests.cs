@@ -6,11 +6,19 @@ namespace FluentValidator.Tests
     [TestFixture]
     public class NumberValidatorTests
     {
+        private TestNumericValidator _validator;
+
+        [SetUp]
+        public void Setup()
+        {
+            _validator = new TestNumericValidator();
+        }
         [Test]
         public void Validate_GreateThanRule_IsInvalid()
         {
-            TestNumericValidator validator = new TestNumericValidator();
-            var validationResult = validator.Validate(new SampleDto { NumericProperty = 2});
+            var sampleDto = new SampleDto { NumericProperty = 2};
+
+            var validationResult = _validator.Validate(sampleDto);
 
             Assert.That(validationResult.IsValid, Is.False);
         }
@@ -18,8 +26,7 @@ namespace FluentValidator.Tests
         [Test]
         public void Validate_GreateThanRule_IsInvalidIfEquals()
         {
-            TestNumericValidator validator = new TestNumericValidator();
-            var validationResult = validator.Validate(new SampleDto { NumericProperty = 5 });
+            var validationResult = _validator.Validate(new SampleDto { NumericProperty = 5 });
 
             Assert.That(validationResult.IsValid, Is.False);
         }
@@ -27,8 +34,7 @@ namespace FluentValidator.Tests
         [Test]
         public void GreateThanRule_IfPropertyMoreThanRuleValue_IsValid()
         {
-            TestNumericValidator validator = new TestNumericValidator();
-            var validationResult = validator.Validate(new SampleDto { NumericProperty = 6 });
+            var validationResult = _validator.Validate(new SampleDto { NumericProperty = 6 });
 
             Assert.That(validationResult.IsValid, Is.True);
         }
@@ -36,8 +42,7 @@ namespace FluentValidator.Tests
         [Test]
         public void LessThanRule_IsValid()
         {
-            TestNumericValidator validator = new TestNumericValidator();
-            var validationResult = validator.Validate(new SampleDto { Numeric2 = 2 });
+            var validationResult = _validator.Validate(new SampleDto { Numeric2 = 2 });
 
             Assert.That(validationResult.IsValid, Is.True);
         }
@@ -45,8 +50,7 @@ namespace FluentValidator.Tests
         [Test]
         public void LessThanRule_IfEquals_IsInvalid()
         {
-            TestNumericValidator validator = new TestNumericValidator();
-            var validationResult = validator.Validate(new SampleDto { Numeric2 = 5 });
+            var validationResult = _validator.Validate(new SampleDto { Numeric2 = 5 });
 
             Assert.That(validationResult.IsValid, Is.False);
         }
@@ -54,8 +58,7 @@ namespace FluentValidator.Tests
         [Test]
         public void LessThanRule_IfPropertyMoreThanRuleValue_IsInValid()
         {
-            TestNumericValidator validator = new TestNumericValidator();
-            var validationResult = validator.Validate(new SampleDto { Numeric2 = 6 });
+            var validationResult = _validator.Validate(new SampleDto { Numeric2 = 6 });
 
             Assert.That(validationResult.IsValid, Is.False);
         }
