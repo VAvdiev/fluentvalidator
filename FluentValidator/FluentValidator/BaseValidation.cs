@@ -20,12 +20,12 @@ namespace FluentValidator
             return  _validators.Count(x => !x.IsValid);
         }
 
-        protected IntValidator RuleFor(Expression<Func<TEntity, int>> getterExpression)
+        protected NumberValidator RuleFor(Expression<Func<TEntity, int>> getterExpression)
         {
             var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);
             var propertyName = PropertyExpressionHelper.GetPropertyName(getterExpression);
 
-            var intValidator = new IntValidator(o=>getter((TEntity)o), propertyName);
+            var intValidator = new NumberValidator(o=>getter((TEntity)o), propertyName);
 
             _validators.Add(intValidator);
 

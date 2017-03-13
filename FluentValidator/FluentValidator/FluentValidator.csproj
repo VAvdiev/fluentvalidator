@@ -46,7 +46,7 @@
     <Compile Include="ValidationResult.cs" />
     <Compile Include="Validators\BaseValidator.cs" />
     <Compile Include="Validators\DateTimeValidator.cs" />
-    <Compile Include="Validators\IntValidator.cs" />
+    <Compile Include="Validators\NumberValidator.cs" />
     <Compile Include="IValidationRule.cs" />
     <Compile Include="IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
