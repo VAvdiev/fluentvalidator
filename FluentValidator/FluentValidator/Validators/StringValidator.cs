@@ -2,26 +2,26 @@
 
 namespace FluentValidator.Validators
 {
-    public class StringValidator : BaseValidator
+    internal class StringValidator : BaseValidator, IStringValidatorOptions
     {
         public StringValidator(Func<object, string> getter, string fieldName) : base(fieldName)
         {
             Getter = getter;
         }
 
-        public StringValidator NotEmpty()
+        public IStringValidatorOptions NotEmpty()
         {
             AddRule<string>(string.IsNullOrEmpty).WithMessage("The property {0} was empty", FieldName);
 
             return this;
         }
 
-        public StringValidator WithMessage(string message)
+        public IStringValidatorOptions WithMessage(string message)
         {
             return WithMessageInt<StringValidator>(message);
         }
 
-        public StringValidator StopOnFirstFailure()
+        public IStringValidatorOptions StopOnFirstFailure()
         {
             return StopOnFirstFailureInt<StringValidator>();
         }

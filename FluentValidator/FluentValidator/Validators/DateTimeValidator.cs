@@ -2,38 +2,38 @@
 
 namespace FluentValidator.Validators
 {
-    public class DateTimeValidator: BaseValidator
+    internal class DateTimeValidator: BaseValidator, IDateTimeValidatorOptions
     {
         public DateTimeValidator(Func<object, DateTime> getter, string fieldName) : base(fieldName)
         {
             Getter = o => getter(o);
         }
 
-        public DateTimeValidator NotNull()
+        public IDateTimeValidatorOptions NotNull()
         {
             AddRule<DateTime?>( x => !x.HasValue).WithMessage("The property {0} Value is null", FieldName);
 
             return this;
         }
 
-        public DateTimeValidator MoreThanToday()
+        public IDateTimeValidatorOptions MoreThanToday()
         {
             AddRule<DateTime>(x => x < DateTime.Today).WithMessage("The property {0} must be more than {1}", FieldName, DateTime.Now);
             return this;
         }
 
-        public DateTimeValidator LessThanToday()
+        public IDateTimeValidatorOptions LessThanToday()
         {
             AddRule<DateTime>(x => x >= DateTime.Today).WithMessage("The property {0} must be less than today", FieldName);
             return this;
         }
 
-        public DateTimeValidator WithMessage(string message)
+        public IDateTimeValidatorOptions WithMessage(string message)
         {
             return WithMessageInt<DateTimeValidator>(message);
         }
 
-        public DateTimeValidator StopOnFirstFailure()
+        public IDateTimeValidatorOptions StopOnFirstFailure()
         {
             return StopOnFirstFailureInt<DateTimeValidator>();
         }

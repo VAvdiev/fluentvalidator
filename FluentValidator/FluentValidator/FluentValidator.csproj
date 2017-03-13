@@ -46,6 +46,9 @@
     <Compile Include="ValidationResult.cs" />
     <Compile Include="Validators\BaseValidator.cs" />
     <Compile Include="Validators\DateTimeValidator.cs" />
+    <Compile Include="Validators\IDateTimeValidatorOptions.cs" />
+    <Compile Include="Validators\INumericValidatorOptions.cs" />
+    <Compile Include="Validators\IStringValidatorOptions.cs" />
     <Compile Include="Validators\NumberValidator.cs" />
     <Compile Include="IValidationRule.cs" />
     <Compile Include="IValidator.cs" />

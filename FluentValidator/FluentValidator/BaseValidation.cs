@@ -10,8 +10,7 @@ namespace FluentValidator
     {
         readonly IList<IValidator> _validators = new List<IValidator>();
 
-
-        protected NumericValidator<int> RuleFor(Expression<Func<TEntity, int>> getterExpression)
+        protected INumericValidatorOptions<int> RuleFor(Expression<Func<TEntity, int>> getterExpression)
         {
             var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);
             var propertyName = PropertyExpressionHelper.GetPropertyName(getterExpression);
@@ -23,7 +22,7 @@ namespace FluentValidator
             return intValidator;
         }
 
-        protected StringValidator RuleFor(Expression<Func<TEntity, string>> getterExpression)
+        protected IStringValidatorOptions RuleFor(Expression<Func<TEntity, string>> getterExpression)
         {
             var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);
             var propertyName = PropertyExpressionHelper.GetPropertyName(getterExpression);
@@ -36,7 +35,7 @@ namespace FluentValidator
         }
 
 
-        protected DateTimeValidator RuleFor(Expression<Func<TEntity, DateTime>> getterExpression)
+        protected IDateTimeValidatorOptions RuleFor(Expression<Func<TEntity, DateTime>> getterExpression)
         {
             var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);
             var propertyName = PropertyExpressionHelper.GetPropertyName(getterExpression);

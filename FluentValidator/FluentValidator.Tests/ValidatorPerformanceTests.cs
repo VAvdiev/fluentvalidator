@@ -9,6 +9,7 @@ namespace FluentValidator.Tests
     public class ValidatorPerformanceTests
     {
         [Test]
+        [Ignore("Run manualy")]
         public void PerformanceTests()
         {
             Random random = new Random();
