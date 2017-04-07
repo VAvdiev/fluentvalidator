@@ -11,7 +11,7 @@
     <description>Fast lightweight validation framework</description>
     <releaseNotes>Initial release supports basic validation features</releaseNotes>
     <copyright>Copyright 2017</copyright>
-    <tags>Fluent validation</tags>
+    <tags>Fluent validation validator fast</tags>
     <dependencies>
       <!-- <dependency id="SampleDependency" version="1.0" /> -->
     </dependencies>
