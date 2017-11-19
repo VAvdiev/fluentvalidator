@@ -40,7 +40,7 @@ namespace FluentValidator.Validators
             Reset();
             foreach (var validationRule in ValidationRules)
             {
-                if (validationRule.Predicate(Getter(entity)))
+                if (validationRule.RulePredicate(Getter(entity)))
                 {
                     SetFailure(validationRule.Message);
                     if (_stopOnFirstFailure)

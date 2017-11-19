@@ -7,12 +7,12 @@ namespace FluentValidator
         public ValidationRule(string message, Func<object, bool> predicate)
         {
             Message = message;
-            Predicate = predicate;
+            RulePredicate = predicate;
         }
 
         public ValidationRule(Func<object, bool> pred)
         {
-            Predicate = pred;
+            RulePredicate = pred;
         }
 
         public void WithMessage(string message)
@@ -27,6 +27,6 @@ namespace FluentValidator
 
         public string Message { get; private set; }
 
-        public Func<object,bool> Predicate { get; set; } 
+        public Func<object,bool> RulePredicate { get; set; } 
     }
 }
