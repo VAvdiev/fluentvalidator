@@ -4,7 +4,6 @@ namespace FluentValidator.Tests
     {
         public TestValidatorWithWhen()
         {
-            RuleFor(x => x.EmployeeID).GreaterThan(3).WithMessage("Message");
             RuleFor(x => x.FirstName).NotEmpty().When(x => x.Id > 0);
             RuleFor(x => x.DateOfBirth).LessThanToday().NotNull();
             RuleFor(x => x.DateOfBirth).NotNull();

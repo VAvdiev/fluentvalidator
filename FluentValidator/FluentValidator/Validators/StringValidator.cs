@@ -28,7 +28,9 @@ namespace FluentValidator.Validators
 
         public IStringValidatorOptions<TEntity> When(Func<TEntity, bool> predicate)
         {
-            return this;
+            Func<object, bool> pred = o => predicate((TEntity) o);
+            
+            return WhenInt<StringValidator<TEntity>>(pred);
         }
     }
 }

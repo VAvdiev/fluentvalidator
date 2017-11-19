@@ -5,10 +5,10 @@ namespace FluentValidator.Validators
 {
     public abstract class BaseValidator : IValidator
     {
-        protected List<ValidationRule> ValidationRules = new List<ValidationRule>();
+        private readonly List<ValidationRule> _validationRules = new List<ValidationRule>();
         private readonly List<string> _validationFailures;
         private bool _stopOnFirstFailure;
-        protected IValidationRule CurrentValidationRule { get; set; }
+        private IValidationRule CurrentValidationRule { get; set; }
 
 
         protected BaseValidator(string fieldName)
@@ -38,8 +38,12 @@ namespace FluentValidator.Validators
         public void Validate(object entity)
         {
             Reset();
-            foreach (var validationRule in ValidationRules)
+            foreach (var validationRule in _validationRules)
             {
+                if (!validationRule.Predicate(entity))
+                {
+                    continue;
+                }
                 if (validationRule.RulePredicate(Getter(entity)))
                 {
                     SetFailure(validationRule.Message);
@@ -56,6 +60,12 @@ namespace FluentValidator.Validators
             CurrentValidationRule.WithMessage(message);
             return (TValidator)this;
         }
+        
+        protected TValidator WhenInt<TValidator>(Func<object,bool> predicate) where TValidator: BaseValidator
+        {
+            CurrentValidationRule.WhenPredicate(predicate);
+            return (TValidator)this;
+        }
 
         protected TValidator StopOnFirstFailureInt<TValidator>() where TValidator : BaseValidator
         {
@@ -65,7 +75,7 @@ namespace FluentValidator.Validators
         protected IValidationRule AddRule<T>(Func<T, bool> pred)
         {
             var validationRule = new ValidationRule(o => pred((T)o));
-            ValidationRules.Add(validationRule);
+            _validationRules.Add(validationRule);
             CurrentValidationRule = validationRule;
             return validationRule;
         }

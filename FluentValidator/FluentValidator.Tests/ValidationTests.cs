@@ -194,6 +194,42 @@ namespace FluentValidator.Tests
         }
 
         [Test]
+        public void When_FirstNameShouldBeNotEmptyWhenIdGreateThenZero()
+        {
+            var validator = new TestValidatorWithWhen();
+            
+            var em = new CreateEmployeeRequest
+            {
+                Id = 2,
+                FirstName = "",
+                EmployeeID = 1,
+                DateOfBirth = DateTime.Now.AddMonths(-1)
+            };
+
+            var validationResult = validator.Validate(em);
+         
+            Assert.That(validationResult.IsValid, Is.False);
+        }
+
+        [Test]
+        public void When_FirstNameRuleNotApplyWhenIdLessThenZero()
+        {
+            var validator = new TestValidatorWithWhen();
+            
+            var em = new CreateEmployeeRequest
+            {
+                Id = -1,
+                FirstName = "",
+                EmployeeID = 1,
+                DateOfBirth = DateTime.Now.AddMonths(-1)
+            };
+
+            var validationResult = validator.Validate(em);
+         
+            Assert.That(validationResult.IsValid, Is.True);
+        }
+        
+        [Test]
         public void TestName()
         {
             var validator = new FluentValidationValidator();

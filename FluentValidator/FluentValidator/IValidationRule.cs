@@ -6,7 +6,9 @@ namespace FluentValidator
     {
         string Message { get; }
         Func<object, bool> RulePredicate { get; set; }
+        Func<object, bool> Predicate { get; }
         void WithMessage(string message);
         void WithMessage(string format, params object[] args);
+        void WhenPredicate(Func<object, bool> predicate);
     }
 }
