@@ -1,10 +1,13 @@
+using System;
+
 namespace FluentValidator.Validators
 {
-    public interface IStringValidatorOptions 
+    public interface IStringValidatorOptions<out TEntity> where TEntity: class 
     {
-        IStringValidatorOptions NotEmpty();
+        IStringValidatorOptions<TEntity> NotEmpty();
 
-        IStringValidatorOptions WithMessage(string message);
-        IStringValidatorOptions StopOnFirstFailure();
+        IStringValidatorOptions<TEntity> WithMessage(string message);
+        IStringValidatorOptions<TEntity> StopOnFirstFailure();
+        IStringValidatorOptions<TEntity> When(Func<TEntity,bool> predicate);
     }
 }

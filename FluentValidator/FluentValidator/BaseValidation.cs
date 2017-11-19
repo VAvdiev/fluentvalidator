@@ -22,12 +22,12 @@ namespace FluentValidator
             return intValidator;
         }
 
-        protected IStringValidatorOptions RuleFor(Expression<Func<TEntity, string>> getterExpression)
+        protected IStringValidatorOptions<TEntity> RuleFor(Expression<Func<TEntity, string>> getterExpression)
         {
             var getter = PropertyExpressionHelper.InitializeGetter(getterExpression);
             var propertyName = PropertyExpressionHelper.GetPropertyName(getterExpression);
 
-            var intValidator = new StringValidator(o => getter((TEntity)o), propertyName);
+            var intValidator = new StringValidator<TEntity>(o => getter((TEntity)o), propertyName);
 
             _validators.Add(intValidator);
 
