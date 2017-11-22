@@ -6,6 +6,7 @@ namespace FluentValidator.Validators
     public abstract class BaseValidator : IValidator
     {
         private readonly List<ValidationRule> _validationRules = new List<ValidationRule>();
+        private readonly List<ValidationRule> _dependentRules = new List<ValidationRule>();
         private readonly List<string> _validationFailures;
         private bool _stopOnFirstFailure;
         private IValidationRule CurrentValidationRule { get; set; }
@@ -38,6 +39,7 @@ namespace FluentValidator.Validators
         public void Validate(object entity)
         {
             Reset();
+            bool hasAnyFailure = false;
             foreach (var validationRule in _validationRules)
             {
                 if (!validationRule.Predicate(entity))
@@ -47,10 +49,23 @@ namespace FluentValidator.Validators
                 if (validationRule.RulePredicate(Getter(entity)))
                 {
                     SetFailure(validationRule.Message);
+                    hasAnyFailure = true;
                     if (_stopOnFirstFailure)
                     {
                         break;
                     }
+                }
+            }
+
+            if (hasAnyFailure)
+            {
+                return;
+            }
+            foreach (var dependentRule in _dependentRules)
+            {
+                if (!dependentRule.RulePredicate(entity))
+                {
+                    SetFailure(dependentRule.Message);
                 }
             }
         }
@@ -76,6 +91,14 @@ namespace FluentValidator.Validators
         {
             var validationRule = new ValidationRule(o => pred((T)o));
             _validationRules.Add(validationRule);
+            CurrentValidationRule = validationRule;
+            return validationRule;
+        }
+
+        protected IValidationRule AddDendentRule<T>(Func<T, bool> pred)
+        {
+            var validationRule = new ValidationRule(o => pred((T)o));
+            _dependentRules.Add(validationRule);
             CurrentValidationRule = validationRule;
             return validationRule;
         }

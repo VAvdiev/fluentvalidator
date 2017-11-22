@@ -28,12 +28,7 @@ namespace ConsoleApplication2
                 empList.Add(em);
             }
 
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            MyValidator(empList);
-
-            stopwatch.Stop();
-            Console.WriteLine("My Elapsed: " + stopwatch.ElapsedMilliseconds);
+          
 
             Stopwatch stopwatch2 = new Stopwatch();
             stopwatch2.Start();
@@ -42,6 +37,14 @@ namespace ConsoleApplication2
             stopwatch2.Stop();
 
             Console.WriteLine("Elapsed: " + stopwatch2.ElapsedMilliseconds);
+
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            MyValidator(empList);
+
+            stopwatch.Stop();
+            Console.WriteLine("My Elapsed: " + stopwatch.ElapsedMilliseconds);
+
             Console.ReadKey();
         }
 

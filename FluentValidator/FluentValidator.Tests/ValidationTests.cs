@@ -230,20 +230,52 @@ namespace FluentValidator.Tests
         }
         
         [Test]
-        public void TestName()
+        public void DependantRule_ValidatesAndSetsMessage()
         {
-            var validator = new FluentValidationValidator();
-            validator.Configure();
+            var validator = new DependentRuleTestValidator();
+
             var em = new CreateEmployeeRequest
             {
-                FirstName = "",
+                Id = -10,
+                FirstName = "qwer",
                 EmployeeID = 1,
                 DateOfBirth = DateTime.Now.AddMonths(-1)
+
             };
 
             var validationResult = validator.Validate(em);
 
+            var validationFailure = validationResult.ValidationFailures.ToList()[0];
+
             Assert.That(validationResult.IsValid, Is.False);
+            Assert.That(validationFailure.FieldName,Is.EqualTo("FirstName"));
+            Assert.That(validationFailure.ValidationMessages.ToList()[0] ,Is.EqualTo("Id should be more than zero"));
+            
+        }
+
+        [Test]
+        public void DependantRule_NotValidateDepenndantRulesIfHasValidationFailures()
+        {
+            var validator = new DependentRuleTestValidator();
+
+            var em = new CreateEmployeeRequest
+            {
+                Id = -10,
+                FirstName = "",
+                EmployeeID = 4,
+                DateOfBirth = DateTime.Now.AddMonths(-1)
+
+            };
+
+            var validationResult = validator.Validate(em);
+
+            var validationFailure = validationResult.ValidationFailures.ToList()[0];
+
+            Assert.That(validationResult.IsValid, Is.False);
+            Assert.That(validationFailure.FieldName, Is.EqualTo("FirstName"));
+            Assert.That(validationFailure.ValidationMessages.Count(), Is.EqualTo(1));
+            Assert.That(validationFailure.ValidationMessages.ToList()[0], Is.EqualTo("The property FirstName was empty"));
+
         }
 
     }

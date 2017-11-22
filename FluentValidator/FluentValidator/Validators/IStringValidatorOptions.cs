@@ -9,5 +9,6 @@ namespace FluentValidator.Validators
         IStringValidatorOptions<TEntity> WithMessage(string message);
         IStringValidatorOptions<TEntity> StopOnFirstFailure();
         IStringValidatorOptions<TEntity> When(Func<TEntity,bool> predicate);
+        IStringValidatorOptions<TEntity> DependentRule(Func<TEntity, bool> dependRule);
     }
 }

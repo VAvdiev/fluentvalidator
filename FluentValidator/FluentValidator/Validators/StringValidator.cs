@@ -32,5 +32,14 @@ namespace FluentValidator.Validators
             
             return WhenInt<StringValidator<TEntity>>(pred);
         }
+
+        public IStringValidatorOptions<TEntity> DependentRule(Func<TEntity, bool> dependRule)
+        {
+            AddDendentRule(dependRule);
+
+            return this;
+        }
+
+  
     }
 }
