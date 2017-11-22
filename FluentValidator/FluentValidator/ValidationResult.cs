@@ -5,15 +5,20 @@ namespace FluentValidator
 {
     public class ValidationResult
     {
-        public ValidationResult(IEnumerable<ValidationFailure> validationFailures)
+        /// <summary>
+        /// For serialization
+        /// </summary>
+        public ValidationResult()
+        {
+            ValidationFailures = new List<ValidationFailure>();
+        }
+
+        public ValidationResult(IEnumerable<ValidationFailure> validationFailures):this()
         {
             ValidationFailures = validationFailures;
         }
 
-        public bool IsValid
-        {
-            get { return !ValidationFailures.Any(); }
-        }
+        public bool IsValid { get { return !ValidationFailures.Any(); } }
 
         public IEnumerable<ValidationFailure> ValidationFailures { get; private set; }
     }

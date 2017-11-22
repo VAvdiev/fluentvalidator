@@ -3,23 +3,24 @@ using System.Collections.Generic;
 
 namespace FluentValidator.Validators
 {
-    public abstract class BaseValidator : IValidator
+    public abstract class PropertyValidator : IValidator
     {
         private readonly List<ValidationRule> _validationRules = new List<ValidationRule>();
         private readonly List<ValidationRule> _dependentRules = new List<ValidationRule>();
         private readonly List<string> _validationFailures;
         private bool _stopOnFirstFailure;
-        private IValidationRule CurrentValidationRule { get; set; }
+        protected IValidationRule CurrentValidationRule { get; set; }
 
 
-        protected BaseValidator(string fieldName)
+        protected PropertyValidator(string fieldName)
         {
             _validationFailures = new List<string>();
             FieldName = fieldName;
             IsValid = true;
         }
 
-        protected BaseValidator(Func<object, object> getter, string fieldName):this(fieldName)
+        protected PropertyValidator(Func<object, object> getter, string fieldName)
+            : this(fieldName)
         {
             FieldName = fieldName;
             IsValid = true;
@@ -39,17 +40,17 @@ namespace FluentValidator.Validators
         public void Validate(object entity)
         {
             Reset();
-            bool hasAnyFailure = false;
             foreach (var validationRule in _validationRules)
             {
                 if (!validationRule.Predicate(entity))
                 {
                     continue;
                 }
+
                 if (validationRule.RulePredicate(Getter(entity)))
                 {
+
                     SetFailure(validationRule.Message);
-                    hasAnyFailure = true;
                     if (_stopOnFirstFailure)
                     {
                         break;
@@ -57,10 +58,7 @@ namespace FluentValidator.Validators
                 }
             }
 
-            if (hasAnyFailure)
-            {
-                return;
-            }
+           
             foreach (var dependentRule in _dependentRules)
             {
                 if (!dependentRule.RulePredicate(entity))
@@ -70,19 +68,25 @@ namespace FluentValidator.Validators
             }
         }
 
-        protected TValidator  WithMessageInt<TValidator>(string message) where TValidator: BaseValidator
+        protected TValidator WithMessageInt<TValidator>(string message) where TValidator : PropertyValidator
         {
             CurrentValidationRule.WithMessage(message);
             return (TValidator)this;
         }
-        
-        protected TValidator WhenInt<TValidator>(Func<object,bool> predicate) where TValidator: BaseValidator
+        protected TValidator WithNameInt<TValidator>(string overridenName) where TValidator : PropertyValidator
+        {
+            FieldName = overridenName;
+
+            return (TValidator)this;
+        }
+
+        protected TValidator WhenInt<TValidator>(Func<object, bool> predicate) where TValidator : PropertyValidator
         {
             CurrentValidationRule.WhenPredicate(predicate);
             return (TValidator)this;
         }
 
-        protected TValidator StopOnFirstFailureInt<TValidator>() where TValidator : BaseValidator
+        protected TValidator StopOnFirstFailureInt<TValidator>() where TValidator : PropertyValidator
         {
             _stopOnFirstFailure = true;
             return (TValidator)this;

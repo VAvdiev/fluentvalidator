@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidator", "FluentVa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidator.Tests", "FluentValidator.Tests\FluentValidator.Tests.csproj", "{B15F0089-5EBE-4799-9B4E-FA0476C87E66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication2", "ConsoleApplication2\ConsoleApplication2.csproj", "{A62CFDC1-BA35-4B02-9859-429F020AABE0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{B15F0089-5EBE-4799-9B4E-FA0476C87E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B15F0089-5EBE-4799-9B4E-FA0476C87E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B15F0089-5EBE-4799-9B4E-FA0476C87E66}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A62CFDC1-BA35-4B02-9859-429F020AABE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A62CFDC1-BA35-4B02-9859-429F020AABE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A62CFDC1-BA35-4B02-9859-429F020AABE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A62CFDC1-BA35-4B02-9859-429F020AABE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
