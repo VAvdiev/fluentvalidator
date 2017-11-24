@@ -12,5 +12,7 @@ namespace FluentValidator.Tests
         public DateTime DateOfBirth { get; set; }
         public string JobTitle { get; set; }
         public int LocationID { get; set; }
+
+        public int? NullableNumber { get; set; }
     }
 }

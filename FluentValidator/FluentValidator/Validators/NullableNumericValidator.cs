@@ -26,21 +26,21 @@ namespace FluentValidator.Validators
 
         public NullableNumericValidator<TEntity,TProperty> GreaterThanOrEqualTo(TProperty value)
         {
-            AddRule<TProperty>(x => !(x.CompareTo(value) > 0 || x.CompareTo(value) == 0))
-                .WithMessage("The value of {0} must be greater than " + value, FieldName);
+            AddRule<TProperty?>(x => !x.HasValue || !(x.Value.CompareTo(value) > 0 || x.Value.CompareTo(value) == 0))
+                .WithMessage("The value of {0} must be greater than or equal to " + value, FieldName);
             return this;
         }
 
         public NullableNumericValidator<TEntity,TProperty> LessThan(TProperty val)
         {
-            AddRule<TProperty>(x => x.CompareTo(val) >= 0)
+            AddRule<TProperty?>(x => !x.HasValue || x.Value.CompareTo(val) >= 0)
                 .WithMessage("The value of {0} must be less than " + val, FieldName);
             return this;
         }
 
         public NullableNumericValidator<TEntity, TProperty> LessThanOrEqualTo(TProperty value)
         {
-            AddRule<TProperty>(x => x.CompareTo(value) >= 0)
+            AddRule<TProperty?>(x => !x.HasValue || x.Value.CompareTo(value) >= 0)
                 .WithMessage("The value of {0} must be less than or equal to" + value, FieldName);
             return this;
         }

@@ -71,6 +71,7 @@
     <Compile Include="FluentValidationValidator.cs" />
     <Compile Include="TestValidator2.cs" />
     <Compile Include="TestValidator4.cs" />
+    <Compile Include="TestValidatorForNullableProperties.cs" />
     <Compile Include="TestValidatorWithManyErrors.cs" />
     <Compile Include="TestValidatorWithStopOnFirstFailure.cs" />
     <Compile Include="TestValidatorWithWhen.cs" />

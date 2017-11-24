@@ -322,5 +322,44 @@ namespace FluentValidator.Tests
         }
 
 
+
+        [Test]
+        public void NullableProperty_ValidatesAndSetsMessage()
+        {
+            var validator = new TestValidatorForNullableProperties();
+
+            var em = new CreateEmployeeRequest
+            {
+               NullableNumber = 2
+
+            };
+
+            var validationResult = validator.Validate(em);
+
+            var validationFailure = validationResult.ValidationFailures.ToList()[0];
+
+            Assert.That(validationResult.IsValid, Is.False);
+            Assert.That(validationFailure.FieldName, Is.EqualTo("NullableNumber"));
+            Assert.That(validationFailure.ValidationMessages.ToList()[0], Is.EqualTo("The value of NullableNumber must be greater than or equal to 3"));
+
+        }
+
+        [Test]
+        public void NullableProperty_ValueEquals_ValidatesAndSetsMessage()
+        {
+            var validator = new TestValidatorForNullableProperties();
+
+            var em = new CreateEmployeeRequest
+            {
+                NullableNumber = 3
+
+            };
+
+            var validationResult = validator.Validate(em);
+
+
+            Assert.That(validationResult.IsValid, Is.True);
+
+        }
     }
 }
