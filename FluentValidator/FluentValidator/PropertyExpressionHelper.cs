@@ -3,13 +3,11 @@ using System.Linq.Expressions;
 
 namespace FluentValidator
 {
-    public class PropertyExpressionHelper
+    internal static class PropertyExpressionHelper
     {
         public static string GetPropertyName<TConatainer,TProperty>(Expression<Func<TConatainer,TProperty>> propertyLambda)
         {
-            var me = propertyLambda.Body as MemberExpression;
-
-            if (me == null)
+            if (!(propertyLambda.Body is MemberExpression me))
             {
                 throw new ArgumentException("You must pass a lambda of the form: '() => Class.Property' or '() => object.Property'");
             }
