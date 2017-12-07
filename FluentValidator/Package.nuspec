@@ -2,16 +2,16 @@
 <package >
   <metadata>
     <id>FastValidator</id>
-    <version>2.0.0.0</version>
+    <version>2.0.0.1</version>
     <authors>Sergey Kichuk</authors>
     <owners>Sergey Kichuk</owners>
     <licenseUrl>https://github.com/exiton3/fluentvalidator/blob/master/LICENCE.txt</licenseUrl>
     <projectUrl>https://github.com/exiton3/fluentvalidator</projectUrl>    
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Fast lightweight validation framework</description>
-    <releaseNotes>Second release added supports When feature and Dependent rules basic validation features</releaseNotes>
+    <releaseNotes>Second release added supports When feature and Dependent rules basic validation features, bug fixes</releaseNotes>
     <copyright>Copyright 2017</copyright>
-    <tags>Fluent validation validator fast</tags>
+    <tags>Fluent validation validator fast framework validate</tags>
     <dependencies>
       <!-- <dependency id="SampleDependency" version="1.0" /> -->
     </dependencies>
