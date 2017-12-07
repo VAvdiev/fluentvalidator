@@ -18,8 +18,8 @@ namespace FluentValidator
             ValidationFailures = validationFailures;
         }
 
-        public bool IsValid { get { return !ValidationFailures.Any(); } }
+        public bool IsValid => !ValidationFailures.Any();
 
-        public IEnumerable<ValidationFailure> ValidationFailures { get; private set; }
+        public IEnumerable<ValidationFailure> ValidationFailures { get; }
     }
 }
