@@ -361,5 +361,24 @@ namespace FluentValidator.Tests
             Assert.That(validationResult.IsValid, Is.True);
 
         }
+
+        [Test]
+        public void NullableProperty_ValueIsNull_ValidatesAndSetsMessage()
+        {
+            var validator = new TestValidatorForNullableProperties();
+
+            var em = new CreateEmployeeRequest
+            {
+                NullableNumber = null
+
+            };
+
+            var validationResult = validator.Validate(em);
+
+
+            Assert.That(validationResult.IsValid, Is.False);
+            var validationFailure = validationResult.ValidationFailures.ToList()[0];
+            Assert.That(validationFailure.ValidationMessages.First(),Is.EqualTo("The value of NullableNumber must not be null"));
+        }
     }
 }

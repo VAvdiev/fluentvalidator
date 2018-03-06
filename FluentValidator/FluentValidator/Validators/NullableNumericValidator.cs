@@ -14,7 +14,7 @@ namespace FluentValidator.Validators
         public NullableNumericValidator<TEntity, TProperty> NotNull()
         {
             AddRule<TProperty?>(x => x == null)
-                .WithMessage("The value of {0} must be null ", FieldName);
+                .WithMessage("The value of {0} must not be null", FieldName);
             return this;
         }
         public NullableNumericValidator<TEntity,TProperty> GreaterThan(TProperty value)

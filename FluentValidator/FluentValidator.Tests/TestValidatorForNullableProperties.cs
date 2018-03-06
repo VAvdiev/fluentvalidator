@@ -4,8 +4,9 @@ namespace FluentValidator.Tests
     {
         public TestValidatorForNullableProperties()
         {
-            //RuleFor(x => x.NullableNumber).GreaterThan(10).WithMessage("Message");
-            RuleFor(x => x.NullableNumber).GreaterThanOrEqualTo(3);
+            RuleFor(x => x.NullableNumber)
+                .NotNull()
+                .GreaterThanOrEqualTo(3);
         }
     }
 }
