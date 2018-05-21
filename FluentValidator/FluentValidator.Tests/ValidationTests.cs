@@ -281,6 +281,49 @@ namespace FluentValidator.Tests
         }
 
         [Test]
+        public void WhenForDependentRule_FirstNameShouldBeEqualToLastName_IfIdGreateThenZero()
+        {
+            var validator = new TestValidatorWithWhenForDependendRule();
+
+            var em = new CreateEmployeeRequest
+            {
+                Id = 2,
+                FirstName = "a",
+                LastName = "a",
+                EmployeeID = 1,
+                DateOfBirth = DateTime.Now.AddMonths(-1)
+            };
+
+            var validationResult = validator.Validate(em);
+
+            var message = validationResult.ValidationFailures.ToArray()[0].ValidationMessages.First();
+           
+            Assert.That(validationResult.IsValid, Is.False);
+
+            Assert.That(message, Is.EqualTo("Depend Rule not passed"));
+        }
+
+        [Test]
+        public void WhenForDependentRule_DependRuleNotAppliedWhenIdLessThenZero()
+        {
+            var validator = new TestValidatorWithWhenForDependendRule();
+
+            var em = new CreateEmployeeRequest
+            {
+                Id = -1,
+                FirstName = "a",
+                LastName = "a",
+                EmployeeID = 1,
+                DateOfBirth = DateTime.Now.AddMonths(-1)
+            };
+
+            var validationResult = validator.Validate(em);
+            var enumerable = validationResult.ValidationFailures.Select(x=> string.Format(x.FieldName +" - " + string.Join(",",x.ValidationMessages)));
+            Console.WriteLine(string.Join("," ,enumerable ));
+            Assert.That(validationResult.IsValid, Is.True);
+        }
+
+        [Test]
         public void TestName()
         {
             var validator = new FluentValidationValidator();

@@ -57,10 +57,13 @@ namespace FluentValidator.Validators
                     }
                 }
             }
-
            
             foreach (var dependentRule in _dependentRules)
             {
+                if (!dependentRule.Predicate(entity))
+                {
+                    continue;
+                }
                 if (!dependentRule.RulePredicate(entity))
                 {
                     SetFailure(dependentRule.Message);
