@@ -10,7 +10,7 @@ namespace FluentValidator.Tests
     public class ValidationTests
     {
         [Test]
-        public void Validate_StringPropertyEmpty_ValitationError()
+        public void Validate_StringPropertyEmpty_ValidationError()
         {
             var validator = new TestValidator();
 
@@ -30,7 +30,7 @@ namespace FluentValidator.Tests
         }
 
         [Test]
-        public void Validate_PropertyHasManyErrors_ValitationError()
+        public void Validate_PropertyHasManyErrors_ValidationError()
         {
             var validator = new TestValidatorWithManyErrors();
 
@@ -55,7 +55,7 @@ namespace FluentValidator.Tests
         }
 
         [Test]
-        public void Validate_PropertyHasManyErrorsAndStopOnFirstFailure_OnlyOneValitationError()
+        public void Validate_PropertyHasManyErrorsAndStopOnFirstFailure_OnlyOneValidationError()
         {
             var validator = new TestValidatorWithStopOnFirstFailure();
 
@@ -123,7 +123,7 @@ namespace FluentValidator.Tests
 
 
         [Test]
-        public void Validate_TwoTimes_NotAccumulateErrorsValitationError()
+        public void Validate_TwoTimes_NotAccumulateErrorsValidationError()
         {
             var validator = new TestValidator2();
 
@@ -152,7 +152,7 @@ namespace FluentValidator.Tests
 
 
         [Test]
-        public void Validate_DateTimePropertyEmpty_ValitationError()
+        public void Validate_DateTimePropertyEmpty_ValidationError()
         {
             var validator = new TestValidator();
 
@@ -174,7 +174,7 @@ namespace FluentValidator.Tests
         }
 
         [Test]
-        public void Validate_IntPropertyEmpty_SetDefaultValitationMessage()
+        public void Validate_IntPropertyEmpty_SetDefaultValidationMessage()
         {
             var validator = new TestValidator2();
 
