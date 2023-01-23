@@ -94,17 +94,17 @@ namespace FluentValidator.Validators
             _stopOnFirstFailure = true;
             return (TValidator)this;
         }
-        protected IValidationRule AddRule<T>(Func<T, bool> pred)
+        protected IValidationRule AddRule<T>(Func<T, bool> predicate)
         {
-            var validationRule = new ValidationRule(o => pred((T)o));
+            var validationRule = new ValidationRule(o => predicate((T)o));
             _validationRules.Add(validationRule);
             CurrentValidationRule = validationRule;
             return validationRule;
         }
 
-        protected IValidationRule AddDendentRule<T>(Func<T, bool> pred)
+        protected IValidationRule AddDependentRule<T>(Func<T, bool> predicate)
         {
-            var validationRule = new ValidationRule(o => pred((T)o));
+            var validationRule = new ValidationRule(o => predicate((T)o));
             _dependentRules.Add(validationRule);
             CurrentValidationRule = validationRule;
             return validationRule;

@@ -60,7 +60,7 @@ namespace FluentValidator.Validators
 
         public NumericValidator<TEntity,TProperty> DependentRule(Func<TEntity,bool> dependentRule)
         {
-            AddDendentRule(dependentRule);
+            AddDependentRule(dependentRule);
             return this;
         }
 

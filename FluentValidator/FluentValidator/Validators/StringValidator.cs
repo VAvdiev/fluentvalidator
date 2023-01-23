@@ -20,7 +20,7 @@ namespace FluentValidator.Validators
 
         public IStringValidatorOptions<TEntity> DependentRule(Func<TEntity, bool> dependRule)
         {
-            AddDendentRule(dependRule);
+            AddDependentRule(dependRule);
 
             return this;
         }
