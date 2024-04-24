@@ -11,7 +11,7 @@
     <PackageId>FastValidator</PackageId>
     <Title>Fast Validator</Title>
     <Authors>Sergey Kichuk</Authors>
-    <Description>Fast fluent Validator</Description>
+    <Description>High performant fluent Validator</Description>
     <PackageProjectUrl>https://github.com/exiton3/fluentvalidator</PackageProjectUrl>
     <RepositoryUrl>https://github.com/exiton3/fluentvalidator</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
