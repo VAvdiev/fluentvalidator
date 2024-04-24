@@ -5,7 +5,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AssemblyTitle>FluentValidator</AssemblyTitle>
     <Product>FastValidator</Product>
-    <Copyright>Copyright © Serge Kichuk 2024</Copyright>
+    <Copyright>Copyright © Sergey Kichuk 2024</Copyright>
     <AssemblyVersion>3.0.0</AssemblyVersion>
     <FileVersion>3.0.0</FileVersion>
     <PackageId>FastValidator</PackageId>
