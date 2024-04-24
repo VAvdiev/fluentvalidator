@@ -1,4 +1,4 @@
-namespace FluentValidator.Tests
+namespace FluentValidator.Tests.Samples
 {
     public class TestValidatorWithWhenForDependendRule : BaseValidator<CreateEmployeeRequest>
     {
@@ -12,4 +12,5 @@ namespace FluentValidator.Tests
             RuleFor(x => x.DateOfBirth).NotNull();
         }
     }
+}    }
 }

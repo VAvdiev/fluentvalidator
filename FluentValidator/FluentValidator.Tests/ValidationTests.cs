@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using FluentValidator.Tests.Samples;
 using NUnit.Framework;
 
 namespace FluentValidator.Tests

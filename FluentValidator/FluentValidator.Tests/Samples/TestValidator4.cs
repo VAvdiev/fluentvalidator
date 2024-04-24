@@ -1,4 +1,4 @@
-namespace FluentValidator.Tests
+namespace FluentValidator.Tests.Samples
 {
     public class TestValidator4 : BaseValidator<CreateEmployeeRequest>
     {
@@ -9,4 +9,5 @@ namespace FluentValidator.Tests
                                       .LessThan(3);
         }
     }
+}    }
 }

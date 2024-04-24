@@ -1,4 +1,4 @@
-namespace FluentValidator.Tests
+namespace FluentValidator.Tests.Samples
 {
     public class DependentRuleTestValidator : BaseValidator<CreateEmployeeRequest>
     {
@@ -12,4 +12,5 @@ namespace FluentValidator.Tests
             RuleFor(x => x.EmployeeID).GreaterThan(3).WithMessage("Message");
         }
     }
+}    }
 }

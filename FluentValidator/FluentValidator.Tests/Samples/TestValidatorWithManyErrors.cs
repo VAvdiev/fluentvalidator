@@ -1,4 +1,4 @@
-namespace FluentValidator.Tests
+namespace FluentValidator.Tests.Samples
 {
     public class TestValidatorWithManyErrors : BaseValidator<CreateEmployeeRequest>
     {
@@ -13,4 +13,5 @@ namespace FluentValidator.Tests
             RuleFor(x => x.DateOfBirth).NotNull();
         }
     }
+}    }
 }

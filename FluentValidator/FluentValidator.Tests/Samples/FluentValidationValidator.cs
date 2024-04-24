@@ -2,7 +2,7 @@ using System;
 using System.Text.RegularExpressions;
 using FluentValidation;
 
-namespace FluentValidator.Tests
+namespace FluentValidator.Tests.Samples
 {
     public class FluentValidationValidator : AbstractValidator<CreateEmployeeRequest>
     {
@@ -16,4 +16,5 @@ namespace FluentValidator.Tests
             return true;
         }
     }
+}    }
 }
