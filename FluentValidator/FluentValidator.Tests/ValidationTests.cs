@@ -50,8 +50,8 @@ namespace FluentValidator.Tests
 
             var validationMessages = validationFailure.ValidationMessages.ToList();
             Assert.That(validationFailures.Count, Is.EqualTo(2));
-            Assert.IsTrue(validationMessages.Contains("Less error"));
-            Assert.IsTrue(validationMessages.Contains("Greater error"));
+            Assert.That(validationMessages.Contains("Less error"),Is.True);
+            Assert.That(validationMessages.Contains("Greater error"),Is.True);
         }
 
         [Test]
@@ -95,9 +95,9 @@ namespace FluentValidator.Tests
 
             var validationMessages = validationFailure.ValidationMessages.ToList();
 
-            Assert.AreEqual(1, validationMessages.Count);
+            Assert.Equals(validationMessages.Count, 1);
 
-            Assert.Contains("The value of EmployeeID must be greater than 0", validationMessages);
+            Assert.That(validationMessages, Does.Contain("The value of EmployeeID must be greater than 0"));
         }
 
         [Test]
@@ -116,9 +116,9 @@ namespace FluentValidator.Tests
 
             var validationMessages = validationFailure.ValidationMessages.ToList();
 
-            Assert.AreEqual(1, validationMessages.Count);
+            Assert.That(validationMessages.Count, Is.EqualTo(1));
 
-            Assert.Contains("The value of EmployeeID must be less than 3", validationMessages);
+            Assert.That(validationMessages, Does.Contain("The value of EmployeeID must be less than 3"));
         }
 
 

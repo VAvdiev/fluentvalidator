@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidator", "FluentValidator\FluentValidator.csproj", "{C43CC367-B65A-4CFC-9C0C-D99792EFF21F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidator", "FluentValidator\FluentValidator.csproj", "{C43CC367-B65A-4CFC-9C0C-D99792EFF21F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentValidator.Tests", "FluentValidator.Tests\FluentValidator.Tests.csproj", "{B15F0089-5EBE-4799-9B4E-FA0476C87E66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidator.Tests", "FluentValidator.Tests\FluentValidator.Tests.csproj", "{B15F0089-5EBE-4799-9B4E-FA0476C87E66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
