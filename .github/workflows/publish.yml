@@ -26,7 +26,7 @@ jobs:
   create_nuget:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0 # Get all history to allow automatic versioning using MinVer
 
@@ -80,7 +80,7 @@ jobs:
   build_sln:
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v3
+     - uses: actions/checkout@v4
      - name: list dir
        run: ls 
      - name: Setup .NET 8.0       
