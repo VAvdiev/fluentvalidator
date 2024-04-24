@@ -12,5 +12,4 @@ namespace FluentValidator.Tests.Samples
                 .WithMessage("Greater error");
         }
     }
-}    }
-}
+}    

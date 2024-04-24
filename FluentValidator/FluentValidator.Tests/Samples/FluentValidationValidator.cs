@@ -16,5 +16,4 @@ namespace FluentValidator.Tests.Samples
             return true;
         }
     }
-}    }
-}
+}    

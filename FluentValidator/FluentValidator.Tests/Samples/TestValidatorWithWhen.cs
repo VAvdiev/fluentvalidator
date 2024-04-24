@@ -9,5 +9,4 @@ namespace FluentValidator.Tests.Samples
             RuleFor(x => x.DateOfBirth).NotNull();
         }
     }
-}    }
-}
+}    

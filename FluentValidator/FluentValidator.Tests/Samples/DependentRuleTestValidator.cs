@@ -12,5 +12,4 @@ namespace FluentValidator.Tests.Samples
             RuleFor(x => x.EmployeeID).GreaterThan(3).WithMessage("Message");
         }
     }
-}    }
-}
+}    

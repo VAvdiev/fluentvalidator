@@ -9,5 +9,4 @@ namespace FluentValidator.Tests.Samples
                                       .LessThan(3);
         }
     }
-}    }
-}
+}    
