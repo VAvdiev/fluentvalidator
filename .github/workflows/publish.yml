@@ -88,7 +88,7 @@ jobs:
        with:
         dotnet-version: '8.0.x'
      - name: Build Solution
-       run: dotnet build /FluentValidator/FluentValidator.sln --configuration Release      
+       run: dotnet build .\FluentValidator\FluentValidator.sln --configuration Release      
       
   deploy:
     # Publish only when creating a GitHub Release
