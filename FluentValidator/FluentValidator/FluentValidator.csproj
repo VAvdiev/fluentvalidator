@@ -14,8 +14,9 @@
     <Description>High performant fluent Validator</Description>
     <PackageProjectUrl>https://github.com/exiton3/fluentvalidator</PackageProjectUrl>
     <RepositoryUrl>https://github.com/exiton3/fluentvalidator</RepositoryUrl>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReadmeFile>docs\README.md</PackageReadmeFile>
     <PackageTags>fluent; validation;</PackageTags>
+    <Version>3.0.0</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev_Test|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -29,12 +30,5 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="docs\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>
