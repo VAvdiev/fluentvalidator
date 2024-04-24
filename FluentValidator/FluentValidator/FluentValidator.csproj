@@ -11,12 +11,13 @@
     <PackageId>FastValidator</PackageId>
     <Title>Fast Validator</Title>
     <Authors>Sergey Kichuk</Authors>
-    <Description>High performant fluent Validator</Description>
+    <Description>High performance fluent Validator</Description>
     <PackageProjectUrl>https://github.com/exiton3/fluentvalidator</PackageProjectUrl>
     <RepositoryUrl>https://github.com/exiton3/fluentvalidator</RepositoryUrl>
-    <PackageReadmeFile>docs\README.md</PackageReadmeFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>fluent; validation;</PackageTags>
     <Version>3.0.0</Version>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev_Test|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,16 @@
     <Optimize>true</Optimize>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
