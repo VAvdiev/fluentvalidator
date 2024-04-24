@@ -18,6 +18,10 @@
     <PackageTags>fluent; validation;</PackageTags>
     <Version>3.0.0</Version>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReleaseNotes>Migrated to .NET 8.0</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev_Test|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
