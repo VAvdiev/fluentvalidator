@@ -95,7 +95,7 @@ namespace FluentValidator.Tests
 
             var validationMessages = validationFailure.ValidationMessages.ToList();
 
-            Assert.Equals(validationMessages.Count, 1);
+            Assert.That(validationMessages.Count, Is.EqualTo(1));
 
             Assert.That(validationMessages, Does.Contain("The value of EmployeeID must be greater than 0"));
         }

@@ -32,7 +32,7 @@ namespace FluentValidator.Tests
             MyValidator(empList);
 
             stopwatch.Stop();
-            Console.WriteLine("My Elapsed: " + stopwatch.ElapsedMilliseconds);
+            Console.WriteLine($"FastValidator Elapsed: {stopwatch.ElapsedMilliseconds} ms");
 
             Stopwatch stopwatch2 = new Stopwatch();
             stopwatch2.Start();
@@ -40,7 +40,7 @@ namespace FluentValidator.Tests
 
             stopwatch2.Stop();
 
-            Console.WriteLine("Elapsed: " + stopwatch2.ElapsedMilliseconds);
+            Console.WriteLine($"FluentValidation Elapsed: {stopwatch2.ElapsedMilliseconds} ms");
         }
 
 
