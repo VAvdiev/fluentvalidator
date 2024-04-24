@@ -32,7 +32,7 @@
 		<EnablePackageValidation>true</EnablePackageValidation>
 
 		<!-- Optional: Detect breaking changes from a previous stable version -->
-		<PackageValidationBaselineVersion>1.0.0</PackageValidationBaselineVersion>
+		<!--<PackageValidationBaselineVersion>2.0.0.3</PackageValidationBaselineVersion>-->
 	</PropertyGroup> 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev_Test|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
