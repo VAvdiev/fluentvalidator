@@ -17,7 +17,7 @@ env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
   DOTNET_NOLOGO: true
   NuGetDirectory: ${{ github.workspace}}/nuget
-
+  SolutionFilePath: ./FluentValidator/FluentValidator.sln
 defaults:
   run:
     shell: pwsh
@@ -35,7 +35,9 @@ jobs:
        with:
         dotnet-version: '8.0.x'
      - name: Build Solution
-       run: dotnet build ./FluentValidator/FluentValidator.sln --configuration Release      
+       run: dotnet build ${{env.SolutionFilePath}} --configuration Release      
+     - name: Test Run
+       run: dotnet test ${{env.SolutionFilePath}} --no-restore        
       
   create_nuget:
     runs-on: ubuntu-latest
