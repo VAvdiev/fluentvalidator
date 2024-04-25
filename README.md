@@ -8,7 +8,7 @@ This is the main repository for AutoMapper, but there's more:
 
 ### How do I get started?
 
-First, create a validator class dirived from BaseValidator<>:
+First, create a validator class derived from BaseValidator<>: and specify the validation rules
 
 ```csharp
     public class CreateEmployeeRequestValidator : BaseValidator<CreateEmployeeRequest>

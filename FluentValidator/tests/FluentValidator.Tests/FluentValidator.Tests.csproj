@@ -5,7 +5,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AssemblyTitle>FluentValidator.Tests</AssemblyTitle>
     <Product>FluentValidator.Tests</Product>
-    <Copyright>Copyright ©  2017</Copyright>
+    <Copyright>Copyright © Sergey Kichuk 2017-2024</Copyright>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
@@ -19,9 +19,6 @@
     <Optimize>true</Optimize>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FluentValidator\FluentValidator.csproj" />
-  </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
@@ -37,5 +34,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="SampleValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\FluentValidator\FluentValidator.csproj" />
   </ItemGroup>
 </Project>
