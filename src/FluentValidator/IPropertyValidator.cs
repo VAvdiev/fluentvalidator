@@ -2,7 +2,7 @@
 
 namespace FluentValidator
 {
-    public interface IValidator
+    public interface IPropertyValidator
     {
         bool IsValid { get; }
 

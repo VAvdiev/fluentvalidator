@@ -8,7 +8,7 @@ namespace FluentValidator
 {
     public abstract class BaseValidator<TEntity> : IValidator<TEntity> where TEntity : class 
     {
-        private readonly IList<IValidator> _validators = new List<IValidator>();
+        private readonly IList<IPropertyValidator> _validators = new List<IPropertyValidator>();
 
         protected NumericValidator<TEntity,T> RuleFor<T>(Expression<Func<TEntity, T>> getterExpression) where T : struct , IComparable
         {

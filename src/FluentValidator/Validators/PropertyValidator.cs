@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FluentValidator.Validators
 {
-    public abstract class PropertyValidator : IValidator
+    public abstract class PropertyValidator : IPropertyValidator
     {
         private readonly List<ValidationRule> _validationRules = new List<ValidationRule>();
         private readonly List<ValidationRule> _dependentRules = new List<ValidationRule>();
