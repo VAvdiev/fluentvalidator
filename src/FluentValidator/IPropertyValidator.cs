@@ -10,9 +10,4 @@ namespace FluentValidator
         string FieldName { get; }
         void Validate(object entity);
     }
-
-    public interface IValidator<T>
-    {
-        ValidationResult Validate(T entity);
-    }
 }
