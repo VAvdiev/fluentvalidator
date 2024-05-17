@@ -4,7 +4,6 @@
 FastValidator is a simple lightwight library for validation of business rules against object.
 It uses fluent API and declarative style to speceify rules
 
-This is the main repository for AutoMapper, but there's more:
 
 ### How do I get started?
 

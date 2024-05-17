@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace FluentValidator
-{
-    public interface IPropertyValidator
-    {
-        bool IsValid { get; }
+namespace FluentValidator;
 
-        IEnumerable<string> ValidationFailures { get; }
-        string FieldName { get; }
-        void Validate(object entity);
-    }
+internal interface IPropertyValidator
+{
+    bool IsValid { get; }
+
+    IEnumerable<string> ValidationFailures { get; }
+    string FieldName { get; }
+    void Validate(object entity);
 }

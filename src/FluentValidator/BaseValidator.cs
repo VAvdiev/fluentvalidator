@@ -70,6 +70,7 @@ namespace FluentValidator
                 .Select(validator => new ValidationFailure(validator.FieldName, validator.ValidationFailures.ToArray()))
                 .ToList();
             AdditionalValidate(entity, validationFailures);
+
             return new ValidationResult(validationFailures);
         }
 
